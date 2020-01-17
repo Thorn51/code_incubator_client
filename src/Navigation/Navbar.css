@@ -1,0 +1,32 @@
+nav {
+  padding: 0 10px 0 10px;
+  background-color: black;
+  color: white;
+}
+
+.navigation_list {
+  list-style-type: none;
+}
+
+.nav_logo {
+  float: left;
+}
+
+.nav_li {
+  float: right;
+  font-size: 1em;
+}
+
+li a {
+  display: block;
+  padding: 8px;
+  color: white;
+  text-decoration: none;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
