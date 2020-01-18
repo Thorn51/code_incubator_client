@@ -1,0 +1,24 @@
+.hero {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  padding: 30px 0px 30px 0px;
+  background: grey;
+}
+
+.app_name {
+  margin: 40px 0px 0px 0px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.hero_tag {
+  font-size: 1em;
+  padding: 0px 10px 0px 10px;
+  text-align: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
