@@ -3,15 +3,25 @@ import NavBar from "./Navigation/NavBar";
 import Hero from "./Hero/Hero";
 import CardList from "./CardList/CardList";
 
-function App(props) {
-  console.log(props.store.ideas);
-  return (
-    <main className="App">
-      <NavBar login="Login" register="Register" />
-      <Hero />
-      <CardList ideas={props.store.ideas} />
-    </main>
-  );
+class App extends React.Component {
+  static defaultProps = {
+    store: {
+      ideas: [],
+      comments: []
+    }
+  };
+
+  render() {
+    const { store } = this.props;
+    console.log(store);
+    return (
+      <main className="App">
+        <NavBar login="Login" register="Register" />
+        <Hero />
+        <CardList ideas={store.ideas} />
+      </main>
+    );
+  }
 }
 
 export default App;
