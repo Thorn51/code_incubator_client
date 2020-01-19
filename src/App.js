@@ -13,7 +13,6 @@ class App extends React.Component {
 
   render() {
     const { store } = this.props;
-    console.log(store);
     return (
       <main className="App">
         <NavBar login="Login" register="Register" />
