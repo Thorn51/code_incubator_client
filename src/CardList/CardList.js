@@ -4,8 +4,13 @@ import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 export default class CardList extends React.Component {
+  static defaultProps = {
+    ideas: []
+  };
+
   render() {
-    const card = this.props.ideas.map(idea => (
+    const { ideas } = this.props;
+    const card = ideas.map(idea => (
       <div className="idea_card" key={idea.id}>
         <div className="project_info">
           <p>{idea.user_id}</p>
