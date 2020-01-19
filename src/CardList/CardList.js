@@ -1,5 +1,7 @@
 import React from "react";
 import "./CardList.css";
+import ThumbDownIcon from "@material-ui/icons/ThumbDown";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 export default class CardList extends React.Component {
   render() {
@@ -10,14 +12,22 @@ export default class CardList extends React.Component {
           <p>{idea.date_submitted}</p>
         </div>
         <h3 className="card_title">{idea.project_title}</h3>
-        <p className="card_content">{idea.project_summary}</p>
+        <p className="card_content">{truncate(idea.project_summary)}</p>
         <div className="card_vote">
-          <i className="material-icons">thumb_up</i>
+          <ThumbUpIcon>thumb_down</ThumbUpIcon>
           <p className="votes_for">{idea.votes}</p>
-          <i className="material-icons">thumb_down</i>
+          <ThumbDownIcon>thumb_down</ThumbDownIcon>
         </div>
       </div>
     ));
     return <div className="card_container">{card}</div>;
+  }
+}
+
+function truncate(content) {
+  const words = content.split(" ");
+
+  if (words.length > 15) {
+    return words.slice(0, 15).join(" ") + "...";
   }
 }
