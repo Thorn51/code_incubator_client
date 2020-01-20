@@ -33,6 +33,6 @@ function truncate(content) {
   const words = content.split(" ");
 
   if (words.length > 15) {
-    return words.slice(0, 15).join(" ") + "...";
+    return words.slice(0, 20).join(" ") + "...";
   }
 }
