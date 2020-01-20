@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import renderer from "react-test-renderer";
 import CardList from "./CardList";
-import { ExpansionPanelActions } from "@material-ui/core";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
