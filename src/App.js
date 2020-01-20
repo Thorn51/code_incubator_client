@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "./Navigation/NavBar";
 import Hero from "./Hero/Hero";
 import CardList from "./CardList/CardList";
+import Footer from "./Footer/Footer";
 
 class App extends React.Component {
   static defaultProps = {
@@ -18,6 +19,7 @@ class App extends React.Component {
         <NavBar login="Login" register="Register" />
         <Hero />
         <CardList ideas={store.ideas} />
+        <Footer />
       </main>
     );
   }
