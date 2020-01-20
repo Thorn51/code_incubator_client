@@ -1,6 +1,9 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import HomePage from "./routes/HomePage/HomePage";
+import LoginPage from "./routes/LoginPage/LoginPage";
+import RegistrationPage from "./routes/RegistrationPage/RegistrationPage";
+import NotFoundPage from "./routes/NoteFoundPage/NoteFoundPage";
 
 class App extends React.Component {
   static defaultProps = {
@@ -14,7 +17,12 @@ class App extends React.Component {
     const { store } = this.props;
     return (
       <main className="App">
-        <HomePage ideas={store.ideas} />
+        <Switch>
+          <Route exact path="/" component={HomePage} store={store} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegistrationPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
       </main>
     );
   }
