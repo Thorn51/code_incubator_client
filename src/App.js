@@ -1,4 +1,5 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import HomePage from "./routes/HomePage/HomePage";
 
 class App extends React.Component {
