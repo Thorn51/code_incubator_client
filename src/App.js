@@ -1,25 +1,19 @@
 import React from "react";
-import NavBar from "./components/Navigation/NavBar";
-import Hero from "./components/Hero/Hero";
-import CardList from "./components/CardList/CardList";
-import Footer from "./components/Footer/Footer";
+import HomePage from "./routes/HomePage/HomePage";
 
 class App extends React.Component {
   static defaultProps = {
     store: {
       ideas: [],
-      comments: []
+      comments: [],
+      users: []
     }
   };
-
   render() {
     const { store } = this.props;
     return (
       <main className="App">
-        <NavBar login="Login" register="Register" />
-        <Hero />
-        <CardList ideas={store.ideas} />
-        <Footer />
+        <HomePage ideas={store.ideas} />
       </main>
     );
   }

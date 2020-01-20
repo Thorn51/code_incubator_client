@@ -7,7 +7,6 @@ export default class CardList extends React.Component {
   static defaultProps = {
     ideas: []
   };
-
   render() {
     const { ideas } = this.props;
     const card = ideas.map(idea => (
