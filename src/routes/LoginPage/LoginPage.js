@@ -4,7 +4,7 @@ import Hero from "../../components/Hero/Hero";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import Footer from "../../components/Footer/Footer";
 
-export default function() {
+export default function LoginPage() {
   return (
     <div>
       <NavBar />
