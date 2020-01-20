@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<CardList /> renders the UI as expected 1`] = `
+<div
+  className="card_container"
+/>
+`;
+
 exports[`renders the UI as expected 1`] = `
 <div
   className="card_container"
