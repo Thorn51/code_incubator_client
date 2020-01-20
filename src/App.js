@@ -1,8 +1,8 @@
 import React from "react";
-import NavBar from "./Navigation/NavBar";
-import Hero from "./Hero/Hero";
-import CardList from "./CardList/CardList";
-import Footer from "./Footer/Footer";
+import NavBar from "./components/Navigation/NavBar";
+import Hero from "./components/Hero/Hero";
+import CardList from "./components/CardList/CardList";
+import Footer from "./components/Footer/Footer";
 
 class App extends React.Component {
   static defaultProps = {
