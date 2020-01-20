@@ -5,9 +5,3 @@ exports[`<CardList /> renders the UI as expected 1`] = `
   className="card_container"
 />
 `;
-
-exports[`renders the UI as expected 1`] = `
-<div
-  className="card_container"
-/>
-`;
