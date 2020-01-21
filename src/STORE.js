@@ -7,6 +7,8 @@ export default {
       project_summary:
         "Lorem ipsum dolor sit amet, te autem soluta facilisi vel, feugiat perfecto sapientem sit ei, in sit electram abhorreant. Ne nam aeterno labitur admodum, qui timeam quaerendum ullamcorper ut. Porro debet molestie eu duo, sea no essent feugait. In nec atqui scaevola, ea sed everti sanctus convenire. Ea quod discere pri, hinc incorrupte ne his.",
       date_submitted: "12.21.19",
+      status: "Idea",
+      github: "fake_url",
       votes: "5"
     },
     {
@@ -16,6 +18,8 @@ export default {
       project_summary:
         "Lorem ipsum dolor sit amet, te autem soluta facilisi vel, feugiat perfecto sapientem sit ei, in sit electram abhorreant. Ne nam aeterno labitur admodum, qui timeam quaerendum ullamcorper ut. Porro debet molestie eu duo, sea no essent feugait. In nec atqui scaevola, ea sed everti sanctus convenire. Ea quod discere pri, hinc incorrupte ne his.",
       date_submitted: "12.15.19",
+      status: "In Development",
+      github: "fake_url",
       votes: "50"
     },
     {
@@ -25,6 +29,8 @@ export default {
       project_summary:
         "Lorem ipsum dolor sit amet, te autem soluta facilisi vel, feugiat perfecto sapientem sit ei, in sit electram abhorreant. Ne nam aeterno labitur admodum, qui timeam quaerendum ullamcorper ut. Porro debet molestie eu duo, sea no essent feugait. In nec atqui scaevola, ea sed everti sanctus convenire. Ea quod discere pri, hinc incorrupte ne his.",
       date_submitted: "1.9.19",
+      status: "Idea",
+      github: "fake_url",
       votes: "25"
     },
     {
@@ -34,6 +40,8 @@ export default {
       project_summary:
         "Lorem ipsum dolor sit amet, te autem soluta facilisi vel, feugiat perfecto sapientem sit ei, in sit electram abhorreant. Ne nam aeterno labitur admodum, qui timeam quaerendum ullamcorper ut. Porro debet molestie eu duo, sea no essent feugait. In nec atqui scaevola, ea sed everti sanctus convenire. Ea quod discere pri, hinc incorrupte ne his.",
       date_submitted: "1.17.20",
+      status: "Completed",
+      github: "fake_url",
       votes: "0"
     }
   ],
