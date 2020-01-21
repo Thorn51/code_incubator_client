@@ -1,0 +1,88 @@
+.idea_page_header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightgray;
+  min-height: 150px;
+  margin-top: 25px;
+}
+
+.project_vote {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  background: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.project_details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+  margin: 15px auto 0px auto;
+  font-weight: bolder;
+  padding: 10px;
+}
+
+.idea_description {
+  margin-bottom: 40px;
+}
+
+.app_name {
+  text-align: center;
+  width: 100%;
+}
+
+.section_title {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px 0px 10px 0px;
+}
+
+.idea_description {
+  width: 90%;
+  height: 100%;
+  margin: 10px auto 10px auto;
+  padding: 10px;
+}
+
+.feedback {
+  width: 90%;
+  margin: 10px auto 10px auto;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+.features_list {
+  list-style-position: inside;
+  padding: 0 0 25px 0;
+}
+
+.comment {
+  border: 1px solid black;
+  margin: 10px 0 10px 0;
+}
+
+.user {
+  width: 100%;
+  padding: 10px;
+  background-color: grey;
+}
+
+.comment_vote {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  height: 25px;
+  background-color: black;
+  color: white;
+}
+
+.comment_text {
+  padding: 10px;
+}
