@@ -6,27 +6,32 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 export default class CardList extends React.Component {
   static defaultProps = {
-    ideas: []
+    ideas: [],
+    users: []
   };
   render() {
-    const { ideas } = this.props;
-    const card = ideas.map(idea => (
-      <Link to={`/idea/${idea.id}`} key={idea.id}>
-        <div className="idea_card">
-          <div className="project_info">
-            <p>{idea.user_id}</p>
-            <p>{idea.date_submitted}</p>
+    const { ideas, users } = this.props;
+
+    const card = ideas.map(idea => {
+      const author = users.find(author => author.id === idea.user_id);
+      return (
+        <Link to={`/idea/${idea.id}`} key={idea.id} className="card_link">
+          <div className="idea_card">
+            <div className="project_info">
+              <p>{author.nick_name}</p>
+              <p>{idea.date_submitted}</p>
+            </div>
+            <h3 className="card_title">{idea.project_title}</h3>
+            <p className="card_content">{truncate(idea.project_summary)}</p>
+            <div className="card_vote">
+              <ThumbUpIcon>thumb_down</ThumbUpIcon>
+              <p className="votes_for">{idea.votes}</p>
+              <ThumbDownIcon>thumb_down</ThumbDownIcon>
+            </div>
           </div>
-          <h3 className="card_title">{idea.project_title}</h3>
-          <p className="card_content">{truncate(idea.project_summary)}</p>
-          <div className="card_vote">
-            <ThumbUpIcon>thumb_down</ThumbUpIcon>
-            <p className="votes_for">{idea.votes}</p>
-            <ThumbDownIcon>thumb_down</ThumbDownIcon>
-          </div>
-        </div>
-      </Link>
-    ));
+        </Link>
+      );
+    });
     return <div className="card_container">{card}</div>;
   }
 }
