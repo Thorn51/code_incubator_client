@@ -7,22 +7,43 @@ export default class Comment extends React.Component {
   static defaultProps = {
     comments: []
   };
-  render() {
-    const { comments, users } = this.props;
-    const ideaComments = comments.map(comment => {
-      const commentAuthor = users.find(author => author.id === comment.user_id);
-      return (
-        <div className="comment" key={comment.id}>
-          <div className="comment_vote">
-            <ThumbUpIcon>thumb_up</ThumbUpIcon>
-            <p className="votes">{comment.votes}</p>
-            <ThumbDownIcon>thumb_down</ThumbDownIcon>
-          </div>
-          <p className="user">{commentAuthor.nick_name}</p>
-          <p className="comment_text">{comment.comment_text}</p>
-        </div>
-      );
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      votes: parseInt(props.votes)
+    };
+  }
+
+  handleThumbsUp = () => {
+    const votes = this.state.votes + 1;
+    this.setState({
+      votes
     });
-    return <div className="comments">{ideaComments}</div>;
+  };
+
+  handleThumbsDown = () => {
+    const votes = this.state.votes - 1;
+    this.setState({
+      votes
+    });
+  };
+
+  commentAuthor = author => {};
+
+  render() {
+    return (
+      <div className="comment">
+        <div className="comment_vote">
+          <ThumbUpIcon onClick={this.handleThumbsUp}>thumb_up</ThumbUpIcon>
+          <p className="votes">{this.state.votes}</p>
+          <ThumbDownIcon onClick={this.handleThumbsDown}>
+            thumb_down
+          </ThumbDownIcon>
+        </div>
+        <p className="user">{this.props.author}</p>
+        <p className="comment_text">{this.props.content}</p>
+      </div>
+    );
   }
 }
