@@ -2,7 +2,7 @@ import React from "react";
 import "./IdeaPage.css";
 import NavBar from "../../components/Navigation/NavBar";
 import CommentForm from "../../components/CommentForm/CommentForm";
-import Comments from "../../components/Comment/Comment";
+import Comment from "../../components/Comment/Comment";
 import Footer from "../../components/Footer/Footer";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
@@ -15,6 +15,15 @@ export default function IdeaPage(props) {
     comment => comment.project_id === props.match.params.ideaId
   );
   const projectAuthor = users.find(author => author.id === idea.user_id);
+  const comment = ideaComments.map(comment => (
+    <Comment
+      key={comment.id}
+      votes={comment.votes}
+      content={comment.comment_text}
+      author={comment.user_id}
+      date={comment.date_submitted}
+    />
+  ));
   return (
     <div>
       <NavBar />
@@ -41,7 +50,7 @@ export default function IdeaPage(props) {
       </section>
       <section className="feedback">
         <h2 className="section_title">Feedback</h2>
-        <Comments comments={ideaComments} users={users} />
+        {comment}
         <CommentForm />
       </section>
       <Footer />
