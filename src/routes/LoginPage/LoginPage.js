@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NavBar from "../../components/Navigation/NavBar";
 import Hero from "../../components/Hero/Hero";
 import LoginForm from "../../components/LoginForm/LoginForm";
@@ -13,8 +14,8 @@ export default function LoginPage() {
       <div className="form_redirect">
         <hr />
         <p>
-          Do you need to create an account? Visit the
-          <a href="#registration">registration page</a>.
+          Do you need to create an account? Visit the{" "}
+          <Link to="/register">registration page</Link>.
         </p>
       </div>
       <Footer />
