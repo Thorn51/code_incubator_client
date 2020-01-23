@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import HomePage from "./routes/HomePage/HomePage";
 import LoginPage from "./routes/LoginPage/LoginPage";
 import RegistrationPage from "./routes/RegistrationPage/RegistrationPage";
-import NotFoundPage from "./routes/NoteFoundPage/NoteFoundPage";
+import NoPage from "./routes/NoPage/NoPage";
 import IdeaPage from "./routes/IdeaPage/IdeaPage";
 import SubmitIdeaPage from "./routes/SubmitIdeaPage/SubmitIdeaPage";
 import STORE from "./STORE";
@@ -56,8 +56,17 @@ class App extends React.Component {
   };
 
   handleComment = newComment => {
+    newComment.id = this.state.comments.length + 1;
     this.setState({
       comments: [...this.state.comments, newComment]
+    });
+  };
+
+  handleNewIdea = newIdea => {
+    const newId = this.state.ideas.length + 1;
+    newIdea.id = newId.toString();
+    this.setState({
+      ideas: [...this.state.ideas, newIdea]
     });
   };
 
@@ -91,8 +100,13 @@ class App extends React.Component {
           />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegistrationPage} />
-          <Route path="/submitidea" component={SubmitIdeaPage} />
-          <Route component={NotFoundPage} />
+          <Route
+            path="/submitidea"
+            render={props => (
+              <SubmitIdeaPage {...props} handleNewIdea={this.handleNewIdea} />
+            )}
+          />
+          <Route component={NoPage} />
         </Switch>
       </main>
     );
