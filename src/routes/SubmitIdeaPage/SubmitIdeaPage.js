@@ -5,12 +5,12 @@ import Hero from "../../components/Hero/Hero";
 import IdeaForm from "../../components/IdeaForm/IdeaForm";
 import Footer from "../../components/Footer/Footer";
 
-export default function SubmitIdeaPage() {
+export default function SubmitIdeaPage(props) {
   return (
     <div className="submit_idea">
       <NavBar />
       <Hero />
-      <IdeaForm />
+      <IdeaForm {...props} handleNewIdea={props.handleNewIdea} />
       <Footer />
     </div>
   );
