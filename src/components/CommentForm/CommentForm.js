@@ -5,22 +5,35 @@ export default class CommentForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comment: "",
-      date_submitted: "",
-      author: "",
-      votes: 0
+      comment: ""
     };
   }
 
-  addComment(comment) {
+  handleChange(comment) {
     this.setState({
       comment
     });
   }
 
+  submitComment(e) {
+    e.preventDefault();
+    const newComment = {
+      id: 0,
+      user_id: 3,
+      project_id: this.props.projectId,
+      comment_text: this.state.comment,
+      date_submitted: new Date().toLocaleDateString(),
+      votes: 0
+    };
+    this.props.handleComment(newComment);
+    this.setState({
+      comment: ""
+    });
+  }
+
   render() {
     return (
-      <form className="comment_form">
+      <form className="comment_form" onSubmit={e => this.submitComment(e)}>
         <h2 className="section_title">Comment</h2>
         <hr />
         <label htmlFor="comment">Leave your thoughts and ideas.</label>
@@ -31,7 +44,7 @@ export default class CommentForm extends React.Component {
           className="comment"
           id="comment"
           value={this.state.comment}
-          onChange={e => this.addComment(e.target.value)}
+          onChange={e => this.handleChange(e.target.value)}
         ></textarea>
         <button type="submit" className="form_button">
           Submit
