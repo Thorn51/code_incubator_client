@@ -20,7 +20,7 @@ export default function Idea(props) {
       </header>
       <section className="project_details">
         <span className="project_author">
-          Submitted by: {props.author.nick_name}
+          Submitted by: {props.author.nickname}
         </span>
         <span className="date_submitted">
           Submitted: {props.idea.date_submitted}
