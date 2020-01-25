@@ -158,22 +158,38 @@ export default {
   users: [
     {
       id: "1",
-      nick_name: "code_guru",
+      first_name: "John",
+      last_name: "Doe",
+      email: "jdoe@devevlopmenttesting.com",
+      password: "notRealForDev!1",
+      nickname: "code_guru",
       votes: "77"
     },
     {
       id: "2",
-      nick_name: "react_champ",
+      first_name: "John",
+      last_name: "Doe",
+      email: "jdoe@devevlopmenttesting.com",
+      password: "notRealForDev1!",
+      nickname: "react_champ",
       votes: "35"
     },
     {
       id: "3",
-      nick_name: "jquery_king",
+      first_name: "John",
+      last_name: "Doe",
+      email: "jdoe@devevlopmenttesting.com",
+      password: "notRealForDev1!",
+      nickname: "jquery_king",
       votes: "20"
     },
     {
       id: "4",
-      nick_name: "css_aficianado",
+      first_name: "John",
+      last_name: "Doe",
+      email: "jdoe@devevlopmenttesting.com",
+      password: "notRealForDev1!",
+      nickname: "css_aficianado",
       votes: "15"
     }
   ]
