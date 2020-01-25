@@ -70,6 +70,14 @@ class App extends React.Component {
     });
   };
 
+  handleRegistration = newUser => {
+    const userId = this.state.users.length + 1;
+    newUser.id = userId;
+    this.setState({
+      users: [...this.state.users, newUser]
+    });
+  };
+
   render() {
     const { ideas, comments, users } = this.state;
     return (
@@ -99,7 +107,15 @@ class App extends React.Component {
             }}
           />
           <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegistrationPage} />
+          <Route
+            path="/register"
+            render={props => (
+              <RegistrationPage
+                {...props}
+                handleRegistration={this.handleRegistration}
+              />
+            )}
+          />
           <Route
             path="/submitidea"
             render={props => (
