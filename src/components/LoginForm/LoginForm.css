@@ -41,6 +41,11 @@ hr {
   opacity: 0.9;
 }
 
+.form_button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .form_redirect {
   width: 80%;
   margin-left: auto;
