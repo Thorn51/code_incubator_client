@@ -11,7 +11,7 @@ export default function CardList(props) {
       <Link to={`/idea/${idea.id}`} key={idea.id} className="card_link">
         <div className="idea_card">
           <div className="project_info">
-            <p>{author.nick_name}</p>
+            <p>{author.nickname}</p>
             <p>{idea.date_submitted}</p>
           </div>
           <h3 className="card_title">{idea.project_title}</h3>
