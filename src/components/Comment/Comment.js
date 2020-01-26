@@ -8,11 +8,11 @@ export default function Comment(props) {
   return (
     <div className="comment">
       <div className="comment_vote">
-        <ThumbUpIcon onClick={() => props.commentUpVote(props.comment.id)}>
+        <ThumbUpIcon onClick={() => props.commentUpVote(props.id)}>
           thumb_up
         </ThumbUpIcon>
         <p className="votes">{props.votes}</p>
-        <ThumbDownIcon onClick={() => props.commentDownVote(props.comment.id)}>
+        <ThumbDownIcon onClick={() => props.commentDownVote(props.id)}>
           thumb_down
         </ThumbDownIcon>
       </div>
