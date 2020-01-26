@@ -23,3 +23,15 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+@media only screen and (min-width: 600px) {
+  .app_name {
+    font-size: 2em;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .app_name {
+    font-size: 3em;
+  }
+}
