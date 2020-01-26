@@ -1,0 +1,35 @@
+.comment {
+  border: 1px solid black;
+  margin: 10px 0 10px 0;
+}
+
+.comment_header {
+  display: flex;
+  flex-direction: row;
+  background: grey;
+}
+
+.user {
+  flex: 0.5;
+  padding: 10px;
+  text-align: left;
+}
+
+.submit_date {
+  flex: 0.5;
+  padding: 10px;
+  text-align: right;
+}
+
+.comment_vote {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  height: 25px;
+  background-color: black;
+  color: white;
+}
+
+.comment_text {
+  padding: 10px;
+}

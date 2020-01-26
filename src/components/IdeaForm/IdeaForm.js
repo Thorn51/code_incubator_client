@@ -57,7 +57,7 @@ export default class IdeaForm extends React.Component {
   validateSummary() {
     const summary = this.state.project_summary.value.trim();
     if (summary.length === 0) {
-      return "The project requires a summary.";
+      return "Please provide a summary of your project idea.";
     }
   }
 

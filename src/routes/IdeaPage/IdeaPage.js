@@ -15,11 +15,8 @@ export default function IdeaPage(props) {
   const comment = ideaComments.map(comment => (
     <Comment
       key={comment.id}
-      id={comment.id}
-      votes={comment.votes}
-      content={comment.comment_text}
-      author={comment.user_id}
-      date={comment.date_submitted}
+      comment={comment}
+      users={props.users}
       commentUpVote={props.commentUpVote}
       commentDownVote={props.commentDownVote}
     />

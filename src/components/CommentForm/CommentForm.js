@@ -19,7 +19,7 @@ export default class CommentForm extends React.Component {
     e.preventDefault();
     const newComment = {
       id: 0,
-      user_id: 3,
+      user_id: "3",
       project_id: this.props.projectId,
       comment_text: this.state.comment,
       date_submitted: new Date().toLocaleDateString(),
