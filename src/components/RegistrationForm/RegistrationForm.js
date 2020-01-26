@@ -14,7 +14,7 @@ export default class RegistrationForm extends React.Component {
         value: "",
         touched: false
       },
-      nick_name: {
+      nickname: {
         value: "",
         touched: false
       },
@@ -51,10 +51,10 @@ export default class RegistrationForm extends React.Component {
     });
   }
 
-  handleNicknameChange(nick_name) {
+  handleNicknameChange(nickname) {
     this.setState({
-      nick_name: {
-        value: nick_name,
+      nickname: {
+        value: nickname,
         touched: true
       }
     });
@@ -89,7 +89,42 @@ export default class RegistrationForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { first_name, last_name, nick_name, email, password } = this.state;
+
+    const newUser = {
+      first_name: this.state.first_name.value,
+      last_name: this.state.last_name.value,
+      nickname: this.state.nickname.value,
+      email: this.state.email.value,
+      password: this.state.password.value
+    };
+    this.props.handleRegistration(newUser);
+    this.setState({
+      first_name: {
+        value: "",
+        touched: false
+      },
+      last_name: {
+        value: "",
+        touched: false
+      },
+      nickname: {
+        value: "",
+        touched: false
+      },
+      email: {
+        value: "",
+        touched: false
+      },
+      password: {
+        value: "",
+        touched: false
+      },
+      repeat_password: {
+        value: "",
+        touched: false
+      }
+    });
+    this.props.history.push("/");
   }
 
   validateFirstName() {
@@ -107,8 +142,8 @@ export default class RegistrationForm extends React.Component {
   }
 
   validateNickname() {
-    const nickName = this.state.nick_name.value.trim();
-    if (nickName.length === 0) {
+    const nickname = this.state.nickname.value.trim();
+    if (nickname.length === 0) {
       return "Nickname is required.";
     }
   }
@@ -148,12 +183,13 @@ export default class RegistrationForm extends React.Component {
   render() {
     const firstNameError = this.validateFirstName();
     const lastNameError = this.validateLastName();
+    const nicknameError = this.validateNickname();
     const emailError = this.validateEmail();
     const passwordError = this.validatePassword();
     const repeatPasswordError = this.validateRepeatPassword();
 
     return (
-      <form className="registration_form">
+      <form className="registration_form" onSubmit={e => this.handleSubmit(e)}>
         <h2 className="section_title">Register</h2>
         <hr />
         <label htmlFor="registration_first_name">First Name:</label>
@@ -167,7 +203,7 @@ export default class RegistrationForm extends React.Component {
           required
         />
         {this.state.first_name.touched && (
-          <ValidationError message={this.validateFirstName()} />
+          <ValidationError message={firstNameError} />
         )}
         <label htmlFor="registration_last_name">Last Name:</label>
         <input
@@ -180,20 +216,20 @@ export default class RegistrationForm extends React.Component {
           required
         />
         {this.state.last_name.touched && (
-          <ValidationError message={this.validateLastName()} />
+          <ValidationError message={lastNameError} />
         )}
-        <label htmlFor="nick_name">Nickname:</label>
+        <label htmlFor="nickname">Nickname:</label>
         <input
           type="text"
-          name="nick_name"
-          id="registration_nick_name"
+          name="nickname"
+          id="registration_nickname"
           placeholder="Enter Nickname"
-          value={this.state.nick_name.value}
+          value={this.state.nickname.value}
           onChange={e => this.handleNicknameChange(e.target.value)}
           required
         />
-        {this.state.last_name.touched && (
-          <ValidationError message={this.validateNickname()} />
+        {this.state.nickname.touched && (
+          <ValidationError message={nicknameError} />
         )}
         <label htmlFor="registration_email">Email:</label>
         <input
@@ -205,9 +241,7 @@ export default class RegistrationForm extends React.Component {
           onChange={e => this.handleEmailChange(e.target.value)}
           required
         />
-        {this.state.email.touched && (
-          <ValidationError message={this.validateEmail()} />
-        )}
+        {this.state.email.touched && <ValidationError message={emailError} />}
         <label htmlFor="registration_password">Password:</label>
         <input
           type="password"
@@ -219,7 +253,7 @@ export default class RegistrationForm extends React.Component {
           required
         />
         {this.state.password.touched && (
-          <ValidationError message={this.validatePassword()} />
+          <ValidationError message={passwordError} />
         )}
         <label htmlFor="registration_repeat_password">Repeat Password:</label>
         <input
@@ -232,7 +266,7 @@ export default class RegistrationForm extends React.Component {
           required
         />
         {this.state.repeat_password.touched && (
-          <ValidationError message={this.validateRepeatPassword()} />
+          <ValidationError message={repeatPasswordError} />
         )}
         <button
           type="submit"
