@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CommentForm /> Renders the UI as expected 1`] = `
+<form
+  className="comment_form"
+  onSubmit={[Function]}
+>
+  <h2
+    className="section_title"
+  >
+    Comment
+  </h2>
+  <hr />
+  <label
+    htmlFor="comment"
+  >
+    Leave your thoughts and ideas.
+  </label>
+  <textarea
+    className="comment"
+    cols="30"
+    id="comment"
+    name="comment"
+    onChange={[Function]}
+    rows="15"
+    value=""
+  />
+  <button
+    className="form_button"
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
+`;

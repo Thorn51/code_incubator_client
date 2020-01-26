@@ -17,7 +17,13 @@ describe("<NavBar />", () => {
   });
 
   it("Renders as expected", () => {
-    const tree = renderer.create(<NavBar />).toJSON();
+    const tree = renderer
+      .create(
+        <BrowserRouter>
+          <NavBar />
+        </BrowserRouter>
+      )
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

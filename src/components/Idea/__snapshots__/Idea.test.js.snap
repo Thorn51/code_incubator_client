@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Idea /> Renders Idea as expected 1`] = `
+Array [
+  <header
+    className="idea_page_header"
+  >
+    <h1
+      className="app_name"
+    />
+    <div
+      className="project_vote"
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root"
+        focusable="false"
+        onClick={[Function]}
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"
+        />
+      </svg>
+      <p
+        className="votes_for"
+      />
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root"
+        focusable="false"
+        onClick={[Function]}
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"
+        />
+      </svg>
+    </div>
+  </header>,
+  <section
+    className="project_details"
+  >
+    <span
+      className="project_author"
+    >
+      Submitted by: 
+    </span>
+    <span
+      className="date_submitted"
+    >
+      Submitted: 
+    </span>
+    <span
+      className="project_status"
+    >
+      Status: 
+    </span>
+    <span
+      className="repo"
+    >
+      Repo: 
+    </span>
+  </section>,
+  <section
+    className="idea_description"
+  >
+    <h2
+      className="section_title"
+    >
+      Overview
+    </h2>
+    <p />
+  </section>,
+]
+`;

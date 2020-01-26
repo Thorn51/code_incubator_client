@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavBar /> Renders as expected 1`] = `
+<nav
+  className="navigationBar"
+>
+  <ul
+    className="nav_logo"
+  >
+    <li
+      className="nav_li"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Code Incubator
+      </a>
+    </li>
+  </ul>
+  <ul
+    className="navigation_list"
+  >
+    <li
+      className="nav_li"
+    >
+      <a
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+    </li>
+    <li
+      className="nav_li"
+    >
+      <a
+        href="/register"
+        onClick={[Function]}
+      >
+        Register
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

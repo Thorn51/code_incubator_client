@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IdeaForm /> renders IdeaForm as expected 1`] = `
+<form
+  className="idea_form"
+  onSubmit={[Function]}
+>
+  <h2
+    className="section_title"
+  >
+    Project Idea
+  </h2>
+  <hr />
+  <label
+    htmlFor="project_title"
+  >
+    Project Name
+  </label>
+  <input
+    id="project_title"
+    name="project_title"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <label
+    htmlFor="project_summary"
+  >
+    Share your coding project idea:
+  </label>
+  <textarea
+    className="project_summary"
+    cols="30"
+    id="project_summary"
+    name="idea"
+    onChange={[Function]}
+    rows="15"
+    value=""
+  />
+  <label
+    htmlFor="project_status"
+  >
+    Project Status
+  </label>
+  <select
+    id="project_status"
+    name="status"
+    onChange={[Function]}
+    value="Idea"
+  >
+    <option
+      defaultValue="Idea"
+    >
+      Idea
+    </option>
+    <option
+      value="In Development"
+    >
+      In Development
+    </option>
+    <option
+      value="Complete"
+    >
+      Complete
+    </option>
+  </select>
+  <label
+    htmlFor="github"
+  >
+    GitHub Repo URL (Optional)
+  </label>
+  <input
+    id="github"
+    name="github"
+    onChange={[Function]}
+    type="url"
+    value=""
+  />
+  <button
+    className="form_button"
+    disabled="The project requires a title."
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
+`;

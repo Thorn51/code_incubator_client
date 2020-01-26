@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginForm /> renders as expected 1`] = `
+<form
+  className="registration_form"
+>
+  <h2
+    className="section_title"
+  >
+    Login
+  </h2>
+  <hr />
+  <label
+    htmlFor="login_email"
+  >
+    Email:
+  </label>
+  <input
+    id="login_email"
+    name="email"
+    placeholder="Enter Email"
+    required={true}
+    type="text"
+  />
+  <label
+    htmlFor="login_password"
+  >
+    Password:
+  </label>
+  <input
+    id="login_password"
+    name="password"
+    placeholder="Enter Password"
+    required={true}
+    type="password"
+  />
+  <button
+    className="form_button"
+    type="submit"
+  >
+    Login
+  </button>
+</form>
+`;

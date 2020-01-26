@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RegistrationForm /> renders as expected 1`] = `
+<form
+  className="registration_form"
+  onSubmit={[Function]}
+>
+  <h2
+    className="section_title"
+  >
+    Register
+  </h2>
+  <hr />
+  <label
+    htmlFor="registration_first_name"
+  >
+    First Name:
+  </label>
+  <input
+    id="registration_first_name"
+    name="first_name"
+    onChange={[Function]}
+    placeholder="Enter First Name"
+    required={true}
+    type="text"
+    value=""
+  />
+  <label
+    htmlFor="registration_last_name"
+  >
+    Last Name:
+  </label>
+  <input
+    id="registration_last_name"
+    name="last_name"
+    onChange={[Function]}
+    placeholder="Enter Last Name"
+    required={true}
+    type="text"
+    value=""
+  />
+  <label
+    htmlFor="nickname"
+  >
+    Nickname:
+  </label>
+  <input
+    id="registration_nickname"
+    name="nickname"
+    onChange={[Function]}
+    placeholder="Enter Nickname"
+    required={true}
+    type="text"
+    value=""
+  />
+  <label
+    htmlFor="registration_email"
+  >
+    Email:
+  </label>
+  <input
+    id="registration_email"
+    name="email"
+    onChange={[Function]}
+    placeholder="Enter Email"
+    required={true}
+    type="text"
+    value=""
+  />
+  <label
+    htmlFor="registration_password"
+  >
+    Password:
+  </label>
+  <input
+    id="registration_password"
+    name="password"
+    onChange={[Function]}
+    placeholder="Enter Password"
+    required={true}
+    type="password"
+    value=""
+  />
+  <label
+    htmlFor="registration_repeat_password"
+  >
+    Repeat Password:
+  </label>
+  <input
+    id="registration_repeat_password"
+    name="repeat_password"
+    onChange={[Function]}
+    placeholder="Repeat Password"
+    required={true}
+    type="password"
+    value=""
+  />
+  <button
+    className="form_button"
+    disabled="First name is required."
+    type="submit"
+  >
+    Register
+  </button>
+</form>
+`;
