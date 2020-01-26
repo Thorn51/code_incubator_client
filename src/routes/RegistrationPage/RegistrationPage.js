@@ -5,12 +5,15 @@ import Hero from "../../components/Hero/Hero";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 import Footer from "../../components/Footer/Footer";
 
-export default function RegistrationPage() {
+export default function RegistrationPage(props) {
   return (
     <div className="page_container">
       <NavBar />
       <Hero />
-      <RegistrationForm />
+      <RegistrationForm
+        {...props}
+        handleRegistration={props.handleRegistration}
+      />
       <div className="form_redirect">
         <hr />
         <p>
