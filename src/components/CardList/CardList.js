@@ -37,3 +37,8 @@ function truncate(content) {
     return words.join(" ");
   }
 }
+
+CardList.defaultProps = {
+  ideas: [],
+  users: []
+};

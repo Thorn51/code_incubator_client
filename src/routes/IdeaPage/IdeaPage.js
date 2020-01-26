@@ -12,15 +12,18 @@ export default function IdeaPage(props) {
     comment => comment.project_id === props.match.params.ideaId
   );
   const projectAuthor = props.users.find(author => author.id === idea.user_id);
-  const comment = ideaComments.map(comment => (
-    <Comment
-      key={comment.id}
-      comment={comment}
-      users={props.users}
-      commentUpVote={props.commentUpVote}
-      commentDownVote={props.commentDownVote}
-    />
-  ));
+  const comment = ideaComments.map(comment => {
+    const commentAuthor = props.users.find(user => user.id === comment.user_id);
+    return (
+      <Comment
+        key={comment.id}
+        {...commentAuthor}
+        {...comment}
+        commentUpVote={props.commentUpVote}
+        commentDownVote={props.commentDownVote}
+      />
+    );
+  });
   return (
     <div>
       <NavBar />

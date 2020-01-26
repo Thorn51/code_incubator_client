@@ -36,3 +36,8 @@ export default function Idea(props) {
     </>
   );
 }
+
+Idea.defaultProps = {
+  idea: {},
+  author: {}
+};
