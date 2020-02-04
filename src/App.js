@@ -6,14 +6,75 @@ import RegistrationPage from "./routes/RegistrationPage/RegistrationPage";
 import NoPage from "./routes/NoPage/NoPage";
 import IdeaPage from "./routes/IdeaPage/IdeaPage";
 import SubmitIdeaPage from "./routes/SubmitIdeaPage/SubmitIdeaPage";
-import STORE from "./STORE";
+import config from "./config";
 
 class App extends React.Component {
   state = {
-    ideas: STORE.ideas,
-    comments: STORE.comments,
-    users: STORE.users
+    ideas: [],
+    comments: [],
+    users: []
   };
+
+  componentDidMount() {
+    const fetchUsersUrl = config.API_ENDPOINT + "/api/users";
+    const fetchIdeasUrl = config.API_ENDPOINT + "/api/ideas";
+    const fetchCommentUrl = config.API_ENDPOINT + "/api/users";
+    const options = {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${config.API_TOKEN}`
+      }
+    };
+    fetch(fetchUsersUrl, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch users");
+        } else {
+          return response.json();
+        }
+      })
+      .then(data => {
+        this.setState({
+          users: data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    fetch(fetchIdeasUrl, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch ideas");
+        } else {
+          return response.json();
+        }
+      })
+      .then(data => {
+        this.setState({
+          ideas: data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    fetch(fetchCommentUrl, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch comments");
+        } else {
+          return response.json();
+        }
+      })
+      .then(data => {
+        this.setState({
+          comments: data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   commentUpVote = commentId => {
     const comment = this.state.comments.find(
@@ -55,13 +116,6 @@ class App extends React.Component {
     });
   };
 
-  handleComment = newComment => {
-    newComment.id = this.state.comments.length + 1;
-    this.setState({
-      comments: [...this.state.comments, newComment]
-    });
-  };
-
   handleNewIdea = newIdea => {
     const newId = this.state.ideas.length + 1;
     newIdea.id = newId.toString();
@@ -79,7 +133,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { ideas, comments, users } = this.state;
+    const { ideas, users } = this.state;
     return (
       <main className="App">
         <Switch>
@@ -94,14 +148,10 @@ class App extends React.Component {
               return (
                 <IdeaPage
                   {...history}
-                  ideas={ideas}
-                  comments={comments}
-                  users={users}
                   commentUpVote={this.commentUpVote}
                   commentDownVote={this.commentDownVote}
                   projectUpVote={this.projectUpVote}
                   projectDownVote={this.projectDownVote}
-                  handleComment={this.handleComment}
                 />
               );
             }}
