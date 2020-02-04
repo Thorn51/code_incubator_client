@@ -11,14 +11,12 @@ import config from "./config";
 class App extends React.Component {
   state = {
     ideas: [],
-    comments: [],
     users: []
   };
 
   componentDidMount() {
     const fetchUsersUrl = config.API_ENDPOINT + "/api/users";
     const fetchIdeasUrl = config.API_ENDPOINT + "/api/ideas";
-    const fetchCommentUrl = config.API_ENDPOINT + "/api/users";
     const options = {
       method: "GET",
       headers: {
@@ -58,45 +56,7 @@ class App extends React.Component {
       .catch(error => {
         console.log(error);
       });
-    fetch(fetchCommentUrl, options)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch comments");
-        } else {
-          return response.json();
-        }
-      })
-      .then(data => {
-        this.setState({
-          comments: data
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
   }
-
-  commentUpVote = commentId => {
-    const comment = this.state.comments.find(
-      comment => comment.id === commentId
-    );
-    const currentVote = parseInt(comment.votes);
-    comment.votes = currentVote + 1;
-    this.setState({
-      comment
-    });
-  };
-
-  commentDownVote = commentId => {
-    const comment = this.state.comments.find(
-      comment => comment.id === commentId
-    );
-    const currentVote = parseInt(comment.votes);
-    comment.votes = currentVote - 1;
-    this.setState({
-      comment
-    });
-  };
 
   projectUpVote = ideaId => {
     const idea = this.state.ideas.find(idea => idea.id === ideaId);
@@ -148,8 +108,6 @@ class App extends React.Component {
               return (
                 <IdeaPage
                   {...history}
-                  commentUpVote={this.commentUpVote}
-                  commentDownVote={this.commentDownVote}
                   projectUpVote={this.projectUpVote}
                   projectDownVote={this.projectDownVote}
                 />
