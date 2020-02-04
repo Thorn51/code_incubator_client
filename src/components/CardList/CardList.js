@@ -6,7 +6,7 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 export default function CardList(props) {
   const card = props.ideas.map(idea => {
-    const author = props.users.find(author => author.id === idea.user_id);
+    const author = props.users.find(author => author.id === idea.author);
     return (
       <Link to={`/idea/${idea.id}`} key={idea.id} className="card_link">
         <div className="idea_card">
