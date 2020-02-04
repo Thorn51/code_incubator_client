@@ -2,6 +2,7 @@ import React from "react";
 import "./Idea.css";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import moment from "moment";
 
 export default function Idea(props) {
   return (
@@ -23,7 +24,7 @@ export default function Idea(props) {
           Submitted by: {props.author.nickname}
         </span>
         <span className="date_submitted">
-          Submitted: {props.idea.date_submitted}
+          Submitted: {moment(props.idea.date_submitted).format("MMM Do YYY")}
         </span>
         <span className="project_status">Status: {props.idea.status}</span>
         <span className="repo">Repo: {props.idea.github}</span>
