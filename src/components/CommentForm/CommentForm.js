@@ -19,7 +19,7 @@ export default class CommentForm extends React.Component {
   submitComment(e) {
     e.preventDefault();
     const newComment = {
-      author: "3",
+      author: 3,
       project: this.props.project,
       comment_text: this.state.comment,
       votes: 0
