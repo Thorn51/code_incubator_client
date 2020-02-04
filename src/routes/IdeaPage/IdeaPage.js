@@ -93,6 +93,83 @@ export default class IdeaPage extends React.Component {
     });
   };
 
+  commentUpVote = commentId => {
+    const comment = this.state.comments.find(
+      comment => comment.id === commentId
+    );
+    const currentVote = parseInt(comment.votes);
+    comment.votes = currentVote + 1;
+    const votes = comment.votes;
+
+    const options = {
+      method: "PATCH",
+      body: JSON.stringify({ votes: votes }),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${config.API_TOKEN}`
+      }
+    };
+
+    fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(
+            "There has been a error while editing the comment vote"
+          );
+        } else {
+          return response.json();
+        }
+      })
+      .then(data => {
+        this.setState({
+          comment
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  commentDownVote = commentId => {
+    const comment = this.state.comments.find(
+      comment => comment.id === commentId
+    );
+    const currentVote = parseInt(comment.votes);
+    comment.votes = currentVote - 1;
+    const votes = comment.votes;
+    console.log(votes);
+    const options = {
+      method: "PATCH",
+      body: JSON.stringify({ votes: votes }),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${config.API_TOKEN}`
+      }
+    };
+
+    fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(
+            "There has been a error while editing the comment vote"
+          );
+        } else {
+          return response.json();
+        }
+      })
+      .then(data => {
+        this.setState({
+          comment
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    this.setState({
+      comment
+    });
+  };
+
   render() {
     const ideaComments = this.state.comments.filter(
       comment => comment.project === this.state.idea.id
@@ -102,6 +179,8 @@ export default class IdeaPage extends React.Component {
       <Comment
         key={comment.id}
         {...comment}
+        commentUpVote={this.commentUpVote}
+        commentDownVote={this.commentDownVote}
         author={this.state.user.nickname}
       />
     ));
