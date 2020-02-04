@@ -2,6 +2,7 @@ import React from "react";
 import "./IdeaForm.css";
 import "../ValidationError/ValidationError";
 import ValidationError from "../ValidationError/ValidationError";
+import config from "../../config";
 
 export default class IdeaForm extends React.Component {
   state = {
@@ -64,30 +65,49 @@ export default class IdeaForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const newIdea = {
-      id: 0,
-      user_id: "1",
+      author: 1,
       project_title: this.state.project_title.value,
       project_summary: this.state.project_summary.value,
-      date_submitted: new Date().toLocaleDateString(),
       status: this.state.status,
-      github: this.state.repo,
-      votes: 0
+      github: this.state.repo
     };
 
-    this.props.handleNewIdea(newIdea);
-    this.setState({
-      project_title: {
-        value: "",
-        touched: false
-      },
-      project_summary: {
-        value: "",
-        touched: false
-      },
-      stats: "Idea",
-      github: ""
-    });
-    this.props.history.push("/");
+    const options = {
+      method: "POST",
+      body: JSON.stringify(newIdea),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${config.API_TOKEN}`
+      }
+    };
+    fetch(config.API_ENDPOINT + "/api/ideas", options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to post idea");
+        } else {
+          return response.json();
+        }
+      })
+      .then(data => {
+        console.log(data);
+        this.props.handleNewIdea(data);
+        this.setState({
+          project_title: {
+            value: "",
+            touched: false
+          },
+          project_summary: {
+            value: "",
+            touched: false
+          },
+          status: "Idea",
+          github: ""
+        });
+        this.props.history.push("/");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   render() {
     const validateTitle = this.validateTitle();
