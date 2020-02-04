@@ -17,7 +17,7 @@ export default function Comment(props) {
         </ThumbDownIcon>
       </div>
       <div className="comment_header">
-        <p className="user">{props.nickname}</p>
+        <p className="user">{props.author}</p>
         <p className="submit_date">{props.date_submitted}</p>
       </div>
       <p className="comment_text">{props.comment_text}</p>
