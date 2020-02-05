@@ -5,6 +5,7 @@ import Idea from "../../components/Idea/Idea";
 import CommentForm from "../../components/CommentForm/CommentForm";
 import Comment from "../../components/Comment/Comment";
 import Footer from "../../components/Footer/Footer";
+import ApiService from "../../services/api-service";
 import config from "../../config";
 
 export default class IdeaPage extends React.Component {
@@ -18,73 +19,26 @@ export default class IdeaPage extends React.Component {
   }
 
   componentDidMount() {
-    const ideaUrl =
-      config.API_ENDPOINT + `/api/ideas/${this.props.match.params.ideaId}`;
-
-    const options = {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${config.API_TOKEN}`
-      }
-    };
-
-    fetch(ideaUrl, options)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Failed to fetch idea -> ${ideaUrl}`);
-        } else {
-          return response.json();
-        }
-      })
-      .then(data => {
+    ApiService.getIdea(this.props.match.params.ideaId)
+      .then(idea => {
+        console.log(idea);
         this.setState({
-          idea: data
+          idea
         });
       })
       .then(() => {
-        fetch(
-          config.API_ENDPOINT + `/api/users/${this.state.idea.author}`,
-          options
-        )
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(
-                `There has been a network failure trying to fetch users`
-              );
-            } else {
-              return response.json();
-            }
-          })
-          .then(user => {
-            this.setState({
-              user: user
-            });
-          })
-          .catch(error => {
-            console.log(error);
+        ApiService.getUser(this.state.idea.author).then(user => {
+          console.log(user);
+          this.setState({
+            user
           });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-
-    fetch(config.API_ENDPOINT + `/api/comments`, options)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("An error is preventing fetching comments");
-        } else {
-          return response.json();
-        }
-      })
-      .then(data => {
-        this.setState({
-          comments: data
         });
-      })
-      .catch(error => {
-        console.log(error);
       });
+    ApiService.getAllComments().then(comments => {
+      this.setState({
+        comments
+      });
+    });
   }
 
   handleComment = newComment => {
@@ -137,10 +91,10 @@ export default class IdeaPage extends React.Component {
     const currentVote = parseInt(comment.votes);
     comment.votes = currentVote - 1;
     const votes = comment.votes;
-    console.log(votes);
+
     const options = {
       method: "PATCH",
-      body: JSON.stringify({ votes: votes }),
+      body: JSON.stringify({ votes }),
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${config.API_TOKEN}`
@@ -157,9 +111,9 @@ export default class IdeaPage extends React.Component {
           return response.json();
         }
       })
-      .then(data => {
+      .then(() => {
         this.setState({
-          comment
+          votes
         });
       })
       .catch(err => {
