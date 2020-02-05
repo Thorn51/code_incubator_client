@@ -2,17 +2,13 @@ import config from "../config";
 
 const ApiService = {
   getAllIdeas() {
-    const ideasUrl = config.API_ENDPOINT + "/api/ideas";
-
-    const options = {
+    return fetch(config.API_ENDPOINT + "/api/ideas", {
       method: "GET",
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${config.API_TOKEN}`
       }
-    };
-
-    return fetch(ideasUrl, options)
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch ideas");
@@ -24,19 +20,33 @@ const ApiService = {
         console.log(error);
       });
   },
-  getAllComments() {},
-  getAllUsers() {
-    const usersUrl = config.API_ENDPOINT + "/api/users";
-
-    const options = {
+  getAllComments() {
+    return fetch(config.API_ENDPOINT + `/api/comments`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${config.API_TOKEN}`
       }
-    };
-
-    return fetch(usersUrl, options)
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("An error is preventing fetching comments");
+        } else {
+          return response.json();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  getAllUsers() {
+    return fetch(config.API_ENDPOINT + "/api/users", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${config.API_TOKEN}`
+      }
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch users");
@@ -48,20 +58,59 @@ const ApiService = {
         console.log(error);
       });
   },
-  getComment() {},
+  getIdea(id) {
+    return fetch(config.API_ENDPOINT + `/api/ideas/${id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${config.API_TOKEN}`
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch idea`);
+        } else {
+          return response.json();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  getUser(id) {
+    return fetch(config.API_ENDPOINT + `/api/users/${id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${config.API_TOKEN}`
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(
+            `There has been a network failure trying to fetch users`
+          );
+        } else {
+          return response.json();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
   postComment() {},
   postIdea() {}
-  // editComment(commentId) {
+  // editComment(commentId, fieldToUpdate) {
   //   const options = {
   //     method: "PATCH",
-  //     body: JSON.stringify({ votes: votes }),
+  //     body: JSON.stringify({ fieldToUpdate }),
   //     headers: {
   //       "content-type": "application/json",
   //       Authorization: `Bearer ${config.API_TOKEN}`
   //     }
   //   };
 
-  //   fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, options)
+  //   return fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, options)
   //     .then(response => {
   //       if (!response.ok) {
   //         throw new Error(
@@ -70,11 +119,6 @@ const ApiService = {
   //       } else {
   //         return response.json();
   //       }
-  //     })
-  //     .then(data => {
-  //       this.setState({
-  //         comment
-  //       });
   //     })
   //     .catch(err => {
   //       console.log(err);
