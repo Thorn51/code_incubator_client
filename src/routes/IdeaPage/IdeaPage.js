@@ -120,7 +120,7 @@ export default class IdeaPage extends React.Component {
           return response.json();
         }
       })
-      .then(data => {
+      .then(() => {
         this.setState({
           comment
         });
@@ -165,9 +165,69 @@ export default class IdeaPage extends React.Component {
       .catch(err => {
         console.log(err);
       });
-    this.setState({
-      comment
-    });
+  };
+
+  projectUpVote = () => {
+    const idea = { ...this.state.idea };
+    idea.votes = parseInt(idea.votes) + 1;
+    const votes = idea.votes;
+    const options = {
+      method: "PATCH",
+      body: JSON.stringify({ votes: votes }),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${config.API_TOKEN}`
+      }
+    };
+
+    fetch(config.API_ENDPOINT + `/api/ideas/${this.state.idea.id}`, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("There was a problem editing idea");
+        } else {
+          return response.json();
+        }
+      })
+      .then(() => {
+        this.setState({
+          idea
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  projectDownVote = () => {
+    const idea = { ...this.state.idea };
+    idea.votes = parseInt(idea.votes) - 1;
+    const votes = idea.votes;
+    const options = {
+      method: "PATCH",
+      body: JSON.stringify({ votes: votes }),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${config.API_TOKEN}`
+      }
+    };
+
+    fetch(config.API_ENDPOINT + `/api/ideas/${this.state.idea.id}`, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("There was a problem editing idea");
+        } else {
+          return response.json();
+        }
+      })
+      .then(() => {
+        this.setState({
+          idea
+        });
+        console.log(this.state);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -190,8 +250,8 @@ export default class IdeaPage extends React.Component {
         <Idea
           idea={this.state.idea}
           author={this.state.user}
-          projectUpVote={this.props.projectUpVote}
-          projectDownVote={this.props.projectDownVote}
+          projectUpVote={this.projectUpVote}
+          projectDownVote={this.projectDownVote}
         />
         <section className="feedback">
           <h2 className="section_title">Feedback</h2>
