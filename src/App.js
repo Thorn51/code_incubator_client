@@ -6,7 +6,7 @@ import RegistrationPage from "./routes/RegistrationPage/RegistrationPage";
 import NoPage from "./routes/NoPage/NoPage";
 import IdeaPage from "./routes/IdeaPage/IdeaPage";
 import SubmitIdeaPage from "./routes/SubmitIdeaPage/SubmitIdeaPage";
-import config from "./config";
+import ApiService from "./services/api-service";
 
 class App extends React.Component {
   state = {
@@ -15,70 +15,19 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    const fetchUsersUrl = config.API_ENDPOINT + "/api/users";
-    const fetchIdeasUrl = config.API_ENDPOINT + "/api/ideas";
-    const options = {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${config.API_TOKEN}`
-      }
-    };
-    fetch(fetchUsersUrl, options)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch users");
-        } else {
-          return response.json();
-        }
-      })
-      .then(data => {
-        this.setState({
-          users: data
-        });
-      })
-      .catch(error => {
-        console.log(error);
+    ApiService.getAllUsers().then(users => {
+      this.setState({
+        users
       });
-    fetch(fetchIdeasUrl, options)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch ideas");
-        } else {
-          return response.json();
-        }
-      })
-      .then(data => {
-        this.setState({
-          ideas: data
-        });
-      })
-      .catch(error => {
-        console.log(error);
+    });
+    ApiService.getAllIdeas().then(ideas => {
+      this.setState({
+        ideas
       });
+    });
   }
 
-  projectUpVote = ideaId => {
-    const idea = this.state.ideas.find(idea => idea.id === ideaId);
-    const currentVote = parseInt(idea.votes);
-    idea.votes = currentVote + 1;
-    this.setState({
-      idea
-    });
-  };
-
-  projectDownVote = ideaId => {
-    const idea = this.state.ideas.find(idea => idea.id === ideaId);
-    const currentVote = parseInt(idea.votes);
-    idea.votes = currentVote - 1;
-    this.setState({
-      idea
-    });
-  };
-
   handleNewIdea = newIdea => {
-    const newId = this.state.ideas.length + 1;
-    newIdea.id = newId.toString();
     this.setState({
       ideas: [...this.state.ideas, newIdea]
     });
@@ -105,13 +54,7 @@ class App extends React.Component {
           <Route
             path="/idea/:ideaId"
             render={history => {
-              return (
-                <IdeaPage
-                  {...history}
-                  projectUpVote={this.projectUpVote}
-                  projectDownVote={this.projectDownVote}
-                />
-              );
+              return <IdeaPage {...history} />;
             }}
           />
           <Route path="/login" component={LoginPage} />
