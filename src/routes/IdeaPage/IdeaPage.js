@@ -7,6 +7,7 @@ import Comment from "../../components/Comment/Comment";
 import Footer from "../../components/Footer/Footer";
 import ApiService from "../../services/api-service";
 import config from "../../config";
+import TokenServices from "../../services/token-service";
 
 export default class IdeaPage extends React.Component {
   constructor(props) {
@@ -18,17 +19,19 @@ export default class IdeaPage extends React.Component {
     };
   }
 
+  static defaultProps = {
+    match: { params: {} }
+  };
+
   componentDidMount() {
-    ApiService.getIdea(this.props.match.params.ideaId)
+    ApiService.getIdea(this.props.match.params.id)
       .then(idea => {
-        console.log(idea);
         this.setState({
           idea
         });
       })
       .then(() => {
         ApiService.getUser(this.state.idea.author).then(user => {
-          console.log(user);
           this.setState({
             user
           });
@@ -60,7 +63,7 @@ export default class IdeaPage extends React.Component {
       body: JSON.stringify({ votes: votes }),
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${config.API_TOKEN}`
+        Authorization: `basic ${TokenServices.getAuthToken()}`
       }
     };
 
@@ -97,7 +100,7 @@ export default class IdeaPage extends React.Component {
       body: JSON.stringify({ votes }),
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${config.API_TOKEN}`
+        Authorization: `basic ${TokenServices.getAuthToken()}`
       }
     };
 
@@ -130,7 +133,7 @@ export default class IdeaPage extends React.Component {
       body: JSON.stringify({ votes: votes }),
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${config.API_TOKEN}`
+        Authorization: `basic ${TokenServices.getAuthToken()}`
       }
     };
 
@@ -161,7 +164,7 @@ export default class IdeaPage extends React.Component {
       body: JSON.stringify({ votes: votes }),
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${config.API_TOKEN}`
+        Authorization: `basic ${TokenServices.getAuthToken()}`
       }
     };
 
