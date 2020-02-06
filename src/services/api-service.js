@@ -26,7 +26,7 @@ const ApiService = {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${config.API_TOKEN}`
+        Authorization: `basic ${TokenServices.getAuthToken()}`
       }
     })
       .then(response => {
@@ -83,7 +83,7 @@ const ApiService = {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${config.API_TOKEN}`
+        Authorization: `basic ${TokenServices.getAuthToken()}`
       }
     })
       .then(response => {
@@ -99,32 +99,50 @@ const ApiService = {
         console.log(error);
       });
   },
-  postComment() {},
-  postIdea() {}
-  // editComment(commentId, fieldToUpdate) {
-  //   const options = {
-  //     method: "PATCH",
-  //     body: JSON.stringify({ fieldToUpdate }),
-  //     headers: {
-  //       "content-type": "application/json",
-  //       Authorization: `Bearer ${config.API_TOKEN}`
-  //     }
-  //   };
+  postComment(newComment) {
+    const options = {
+      method: "POST",
+      body: JSON.stringify(newComment),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `basic ${TokenServices.getAuthToken()}`
+      }
+    };
 
-  //   return fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, options)
-  //     .then(response => {
-  //       if (!response.ok) {
-  //         throw new Error(
-  //           "There has been a error while editing the comment vote"
-  //         );
-  //       } else {
-  //         return response.json();
-  //       }
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
+    return fetch(config.API_ENDPOINT + "/api/comments", options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("There has been a problem posting the comment");
+        } else {
+          return response.json();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  postIdea(newIdea) {
+    const options = {
+      method: "POST",
+      body: JSON.stringify(newIdea),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `basic ${TokenServices.getAuthToken()}`
+      }
+    };
+    return fetch(config.API_ENDPOINT + "/api/ideas", options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to post idea");
+        } else {
+          return response.json();
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+  editComment() {}
 };
 
 export default ApiService;
