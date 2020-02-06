@@ -7,6 +7,7 @@ import NoPage from "./routes/NoPage/NoPage";
 import IdeaPage from "./routes/IdeaPage/IdeaPage";
 import SubmitIdeaPage from "./routes/SubmitIdeaPage/SubmitIdeaPage";
 import ApiService from "./services/api-service";
+import PrivateRoute from "./components/utils/PrivateRoute";
 
 class App extends React.Component {
   state = {
@@ -51,12 +52,7 @@ class App extends React.Component {
             path="/"
             render={props => <HomePage ideas={ideas} users={users} />}
           />
-          <Route
-            path="/idea/:ideaId"
-            render={history => {
-              return <IdeaPage {...history} />;
-            }}
-          />
+          <PrivateRoute path="/idea/:id" component={IdeaPage} />
           <Route path="/login" component={LoginPage} />
           <Route
             path="/register"
