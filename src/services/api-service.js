@@ -1,4 +1,5 @@
 import config from "../config";
+import TokenServices from "./token-service";
 
 const ApiService = {
   getAllIdeas() {
@@ -63,7 +64,7 @@ const ApiService = {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${config.API_TOKEN}`
+        Authorization: `basic ${TokenServices.getAuthToken()}`
       }
     })
       .then(response => {
