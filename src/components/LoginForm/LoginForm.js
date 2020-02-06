@@ -7,8 +7,6 @@ export default class LoginForm extends React.Component {
     e.preventDefault();
     const { email, password } = e.target;
 
-    console.log(email.value, password.value);
-
     TokenServices.saveAuthToken(
       TokenServices.makeBasicAuthToken(email.value, password.value)
     );
