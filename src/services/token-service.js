@@ -12,6 +12,9 @@ const TokenServices = {
   },
   hasAuthToken() {
     return !!TokenServices.getAuthToken();
+  },
+  clearAuthToken() {
+    window.localStorage.removeItem(config.TOKEN_KEY);
   }
 };
 

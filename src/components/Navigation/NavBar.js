@@ -4,7 +4,9 @@ import "./NavBar.css";
 import TokenServices from "../../services/token-service";
 
 class NavBar extends React.Component {
-  handleLogoutClick = () => {};
+  handleLogoutClick = () => {
+    TokenServices.clearAuthToken();
+  };
 
   renderLogoutNav() {
     return (
