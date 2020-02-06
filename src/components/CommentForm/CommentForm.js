@@ -1,6 +1,6 @@
 import React from "react";
 import "./CommentForm.css";
-import config from "../../config";
+import ApiService from "../../services/api-service";
 
 export default class CommentForm extends React.Component {
   constructor(props) {
@@ -19,38 +19,16 @@ export default class CommentForm extends React.Component {
   submitComment(e) {
     e.preventDefault();
     const newComment = {
-      author: 3,
       project: this.props.project,
-      comment_text: this.state.comment,
-      votes: 0
+      comment_text: this.state.comment
     };
 
-    const options = {
-      method: "POST",
-      body: JSON.stringify(newComment),
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${config.API_TOKEN}`
-      }
-    };
-
-    fetch(config.API_ENDPOINT + "/api/comments", options)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("There has been a problem posting the comment");
-        } else {
-          return response.json();
-        }
-      })
-      .then(data => {
-        this.setState({
-          comment: ""
-        });
-        this.props.handleComment(data);
-      })
-      .catch(error => {
-        console.log(error);
+    ApiService.postComment(newComment).then(data => {
+      this.setState({
+        comment: ""
       });
+      this.props.handleComment(data);
+    });
   }
 
   render() {
