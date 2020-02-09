@@ -52,6 +52,11 @@ hr {
   margin-right: auto;
 }
 
+.red {
+  color: red;
+  font-weight: bolder;
+}
+
 /* LOGIN FORM */
 
 .login_register {
