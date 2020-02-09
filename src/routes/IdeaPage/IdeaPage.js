@@ -180,7 +180,6 @@ export default class IdeaPage extends React.Component {
         this.setState({
           idea
         });
-        console.log(this.state);
       })
       .catch(err => {
         console.log(err);

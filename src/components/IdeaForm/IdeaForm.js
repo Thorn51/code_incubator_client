@@ -72,7 +72,6 @@ export default class IdeaForm extends React.Component {
     };
 
     ApiService.postIdea(newIdea).then(data => {
-      console.log(data);
       this.props.handleNewIdea(data);
       this.setState({
         project_title: {
