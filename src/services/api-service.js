@@ -7,7 +7,7 @@ const ApiService = {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${config.API_TOKEN}`
+        Authorization: `basic ${config.API_TOKEN}`
       }
     })
       .then(response => {
@@ -26,7 +26,7 @@ const ApiService = {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        Authorization: `basic ${TokenServices.getAuthToken()}`
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
     })
       .then(response => {
@@ -64,7 +64,7 @@ const ApiService = {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        Authorization: `basic ${TokenServices.getAuthToken()}`
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
     })
       .then(response => {
@@ -83,7 +83,7 @@ const ApiService = {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        Authorization: `basic ${TokenServices.getAuthToken()}`
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
     })
       .then(response => {
@@ -105,7 +105,7 @@ const ApiService = {
       body: JSON.stringify(newComment),
       headers: {
         "content-type": "application/json",
-        Authorization: `basic ${TokenServices.getAuthToken()}`
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
     };
 
@@ -127,7 +127,7 @@ const ApiService = {
       body: JSON.stringify(newIdea),
       headers: {
         "content-type": "application/json",
-        Authorization: `basic ${TokenServices.getAuthToken()}`
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
     };
     return fetch(config.API_ENDPOINT + "/api/ideas", options)

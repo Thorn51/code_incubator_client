@@ -63,7 +63,7 @@ export default class IdeaPage extends React.Component {
       body: JSON.stringify({ votes: votes }),
       headers: {
         "content-type": "application/json",
-        Authorization: `basic ${TokenServices.getAuthToken()}`
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
     };
 
@@ -100,7 +100,7 @@ export default class IdeaPage extends React.Component {
       body: JSON.stringify({ votes }),
       headers: {
         "content-type": "application/json",
-        Authorization: `basic ${TokenServices.getAuthToken()}`
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
     };
 
@@ -133,7 +133,7 @@ export default class IdeaPage extends React.Component {
       body: JSON.stringify({ votes: votes }),
       headers: {
         "content-type": "application/json",
-        Authorization: `basic ${TokenServices.getAuthToken()}`
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
     };
 
@@ -164,7 +164,7 @@ export default class IdeaPage extends React.Component {
       body: JSON.stringify({ votes: votes }),
       headers: {
         "content-type": "application/json",
-        Authorization: `basic ${TokenServices.getAuthToken()}`
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
     };
 
