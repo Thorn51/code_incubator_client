@@ -15,10 +15,11 @@ const AuthApiService = {
     );
   },
   postRegistration(user) {
-    return fetch(`${config.API_ENDPOINT}/users`, {
+    return fetch(`${config.API_ENDPOINT}/api/users`, {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        Authorization: `basic ${config.API_TOKEN}`
       },
       body: JSON.stringify(user)
     }).then(response =>
