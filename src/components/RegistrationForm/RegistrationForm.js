@@ -1,6 +1,7 @@
 import React from "react";
 import "./RegistrationForm.css";
 import ValidationError from "../ValidationError/ValidationError";
+import AuthService from "../../services/auth-api-service";
 
 export default class RegistrationForm extends React.Component {
   constructor(props) {
@@ -29,7 +30,8 @@ export default class RegistrationForm extends React.Component {
       repeat_password: {
         value: "",
         touched: false
-      }
+      },
+      error: null
     };
   }
 
@@ -89,6 +91,9 @@ export default class RegistrationForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({
+      error: null
+    });
 
     const newUser = {
       first_name: this.state.first_name.value,
@@ -97,34 +102,43 @@ export default class RegistrationForm extends React.Component {
       email: this.state.email.value,
       password: this.state.password.value
     };
-    this.props.handleRegistration(newUser);
-    this.setState({
-      first_name: {
-        value: "",
-        touched: false
-      },
-      last_name: {
-        value: "",
-        touched: false
-      },
-      nickname: {
-        value: "",
-        touched: false
-      },
-      email: {
-        value: "",
-        touched: false
-      },
-      password: {
-        value: "",
-        touched: false
-      },
-      repeat_password: {
-        value: "",
-        touched: false
-      }
-    });
-    this.props.history.push("/");
+
+    AuthService.postRegistration(newUser)
+      .then(user => {
+        this.props.handleRegistration(newUser);
+        this.setState({
+          first_name: {
+            value: "",
+            touched: false
+          },
+          last_name: {
+            value: "",
+            touched: false
+          },
+          nickname: {
+            value: "",
+            touched: false
+          },
+          email: {
+            value: "",
+            touched: false
+          },
+          password: {
+            value: "",
+            touched: false
+          },
+          repeat_password: {
+            value: "",
+            touched: false
+          }
+        });
+        this.props.history.push("/");
+      })
+      .catch(res => {
+        this.setState({
+          error: res.error
+        });
+      });
   }
 
   validateFirstName() {
