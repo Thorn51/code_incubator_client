@@ -3,6 +3,7 @@
 exports[`<LoginForm /> renders as expected 1`] = `
 <form
   className="registration_form"
+  onSubmit={[Function]}
 >
   <h2
     className="section_title"
@@ -11,28 +12,31 @@ exports[`<LoginForm /> renders as expected 1`] = `
   </h2>
   <hr />
   <label
-    htmlFor="login_email"
+    htmlFor="email"
   >
     Email:
   </label>
   <input
-    id="login_email"
+    id="email"
     name="email"
     placeholder="Enter Email"
     required={true}
     type="text"
   />
   <label
-    htmlFor="login_password"
+    htmlFor="password"
   >
     Password:
   </label>
   <input
-    id="login_password"
+    id="password"
     name="password"
     placeholder="Enter Password"
     required={true}
     type="password"
+  />
+  <div
+    role="alert"
   />
   <button
     className="form_button"
