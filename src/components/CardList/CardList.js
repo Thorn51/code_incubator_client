@@ -16,7 +16,11 @@ export default function CardList(props) {
           <h3 className="card_title">{idea.project_title}</h3>
           <p className="card_content">{truncate(idea.project_summary)}</p>
           <div className="card_vote">
-            <p className="votes_for">{idea.votes} People Say go for It!</p>
+            {idea.votes >= 0 ? (
+              <p className="votes_for">{idea.votes} People Say go for It!</p>
+            ) : (
+              <p className="votes_for"></p>
+            )}
           </div>
         </div>
       </Link>
