@@ -100,16 +100,14 @@ const ApiService = {
       });
   },
   postComment(newComment) {
-    const options = {
+    return fetch(config.API_ENDPOINT + "/api/comments", {
       method: "POST",
       body: JSON.stringify(newComment),
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
-    };
-
-    return fetch(config.API_ENDPOINT + "/api/comments", options)
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error("There has been a problem posting the comment");
@@ -122,15 +120,14 @@ const ApiService = {
       });
   },
   postIdea(newIdea) {
-    const options = {
+    return fetch(config.API_ENDPOINT + "/api/ideas", {
       method: "POST",
       body: JSON.stringify(newIdea),
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
-    };
-    return fetch(config.API_ENDPOINT + "/api/ideas", options)
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to post idea");
