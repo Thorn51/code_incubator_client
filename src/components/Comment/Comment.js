@@ -27,3 +27,7 @@ export default function Comment(props) {
     </div>
   );
 }
+
+Comment.defaultProps = {
+  commentAuthor: []
+};
