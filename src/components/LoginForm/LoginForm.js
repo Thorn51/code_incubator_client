@@ -20,8 +20,6 @@ export default class LoginForm extends React.Component {
     this.setState({ error: null });
     const { email, password } = e.target;
 
-    console.log(this.state);
-
     AuthApiService.postLogin({ email: email.value, password: password.value })
       .then(response => {
         email.value = "";
