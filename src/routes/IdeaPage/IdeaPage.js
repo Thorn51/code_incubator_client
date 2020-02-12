@@ -51,7 +51,6 @@ export default class IdeaPage extends React.Component {
   }
 
   handleComment = newComment => {
-    console.log(newComment);
     this.setState({
       comments: [...this.state.comments, newComment]
     });

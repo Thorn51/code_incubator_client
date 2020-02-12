@@ -5,7 +5,6 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import moment from "moment";
 
 export default function Comment(props) {
-  console.log(props);
   return (
     <div className="comment">
       <div className="comment_vote">
