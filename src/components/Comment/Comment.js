@@ -5,6 +5,7 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import moment from "moment";
 
 export default function Comment(props) {
+  console.log(props);
   return (
     <div className="comment">
       <div className="comment_vote">
@@ -17,7 +18,7 @@ export default function Comment(props) {
         </ThumbDownIcon>
       </div>
       <div className="comment_header">
-        <p className="user">{props.author}</p>
+        <p className="user">{props.commentAuthor.nickname}</p>
         <p className="submit_date">
           {moment(props.date_submitted).format("MMM Do YYYY")}
         </p>
