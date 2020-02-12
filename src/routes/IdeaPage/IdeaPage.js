@@ -14,7 +14,8 @@ export default class IdeaPage extends React.Component {
     super(props);
     this.state = {
       idea: [],
-      user: [],
+      ideaAuthor: [],
+      users: [],
       comments: []
     };
   }
@@ -31,12 +32,17 @@ export default class IdeaPage extends React.Component {
         });
       })
       .then(() => {
-        ApiService.getUser(this.state.idea.author).then(user => {
+        ApiService.getUser(this.state.idea.author).then(ideaAuthor => {
           this.setState({
-            user
+            ideaAuthor
           });
         });
       });
+    ApiService.getAllUsers().then(users => {
+      this.setState({
+        users
+      });
+    });
     ApiService.getAllComments().then(comments => {
       this.setState({
         comments
@@ -45,6 +51,7 @@ export default class IdeaPage extends React.Component {
   }
 
   handleComment = newComment => {
+    console.log(newComment);
     this.setState({
       comments: [...this.state.comments, newComment]
     });
@@ -191,21 +198,26 @@ export default class IdeaPage extends React.Component {
       comment => comment.project === this.state.idea.id
     );
 
-    const comment = ideaComments.map(comment => (
-      <Comment
-        key={comment.id}
-        {...comment}
-        commentUpVote={this.commentUpVote}
-        commentDownVote={this.commentDownVote}
-        author={this.state.user.nickname}
-      />
-    ));
+    const comment = ideaComments.map(comment => {
+      const commentAuthor = this.state.users.find(
+        author => author.id === comment.author
+      );
+      return (
+        <Comment
+          key={comment.id}
+          {...comment}
+          commentUpVote={this.commentUpVote}
+          commentDownVote={this.commentDownVote}
+          commentAuthor={commentAuthor}
+        />
+      );
+    });
     return (
       <div>
         <NavBar />
         <Idea
           idea={this.state.idea}
-          author={this.state.user}
+          author={this.state.ideaAuthor}
           projectUpVote={this.projectUpVote}
           projectDownVote={this.projectDownVote}
         />
