@@ -132,7 +132,7 @@ export default class RegistrationForm extends React.Component {
             touched: false
           }
         });
-        this.props.history.push("/");
+        this.props.history.push("/login");
       })
       .catch(res => {
         this.setState({
