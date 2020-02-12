@@ -4,7 +4,8 @@
   color: white;
 }
 
-.navigation_list {
+.navigation_list,
+.nav_logo {
   list-style-type: none;
 }
 
