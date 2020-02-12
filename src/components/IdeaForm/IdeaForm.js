@@ -85,7 +85,7 @@ export default class IdeaForm extends React.Component {
         status: "Idea",
         github: ""
       });
-      this.props.history.push("/");
+      this.props.history.push(`/idea/${data.id}`);
     });
   }
   render() {
