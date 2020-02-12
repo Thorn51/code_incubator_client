@@ -64,16 +64,14 @@ export default class IdeaPage extends React.Component {
     comment.votes = currentVote + 1;
     const votes = comment.votes;
 
-    const options = {
+    fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, {
       method: "PATCH",
       body: JSON.stringify({ votes: votes }),
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
-    };
-
-    fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, options)
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error(
@@ -101,16 +99,14 @@ export default class IdeaPage extends React.Component {
     comment.votes = currentVote - 1;
     const votes = comment.votes;
 
-    const options = {
+    fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, {
       method: "PATCH",
       body: JSON.stringify({ votes }),
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
-    };
-
-    fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, options)
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error(
@@ -134,16 +130,15 @@ export default class IdeaPage extends React.Component {
     const idea = { ...this.state.idea };
     idea.votes = parseInt(idea.votes) + 1;
     const votes = idea.votes;
-    const options = {
+
+    fetch(config.API_ENDPOINT + `/api/ideas/${this.state.idea.id}`, {
       method: "PATCH",
       body: JSON.stringify({ votes: votes }),
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
-    };
-
-    fetch(config.API_ENDPOINT + `/api/ideas/${this.state.idea.id}`, options)
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error("There was a problem editing idea");
@@ -165,16 +160,15 @@ export default class IdeaPage extends React.Component {
     const idea = { ...this.state.idea };
     idea.votes = parseInt(idea.votes) - 1;
     const votes = idea.votes;
-    const options = {
+
+    fetch(config.API_ENDPOINT + `/api/ideas/${this.state.idea.id}`, {
       method: "PATCH",
       body: JSON.stringify({ votes: votes }),
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
-    };
-
-    fetch(config.API_ENDPOINT + `/api/ideas/${this.state.idea.id}`, options)
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error("There was a problem editing idea");
