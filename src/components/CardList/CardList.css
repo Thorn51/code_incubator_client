@@ -31,7 +31,9 @@
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
-  height: 25px;
+  align-items: center;
+  font-size: 0.9em;
+  height: 30px;
   background-color: #4e4a59;
   color: white;
   position: absolute;
@@ -56,7 +58,9 @@
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
-  height: 25px;
+  align-items: center;
+  font-size: 0.9em;
+  height: 30px;
   background-color: #4e4a59;
   color: white;
   position: absolute;
