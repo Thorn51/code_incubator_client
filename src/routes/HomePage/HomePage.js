@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "../../components/Navigation/NavBar";
 import Hero from "../../components/Hero/Hero";
 import CardList from "../../components/CardList/CardList";
 import Footer from "../../components/Footer/Footer";
@@ -21,7 +20,6 @@ class HomePage extends React.Component {
     const { ideas, users } = this.props;
     return (
       <main className="App">
-        <NavBar />
         <Hero />
         {TokenServices.hasAuthToken() ? this.renderSubmitIdeaButton() : null}
         <CardList ideas={ideas} users={users} />
