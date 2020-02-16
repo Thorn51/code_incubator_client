@@ -16,6 +16,12 @@
 .nav_li {
   float: right;
   font-size: 1em;
+  min-width: 75px;
+  text-align: center;
+}
+
+.nav_li:hover {
+  background-color: #8da1b9;
 }
 
 li a {
