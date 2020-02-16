@@ -24,7 +24,11 @@ export default function CardList(props) {
       </Link>
     );
   });
-  return <div className="card_container">{card}</div>;
+  return (
+    <section className="latest_ideas">
+      <div className="card_container">{card}</div>
+    </section>
+  );
 }
 
 function truncate(content) {
