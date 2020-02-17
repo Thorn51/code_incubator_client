@@ -18,12 +18,12 @@ class NavBar extends React.Component {
         </ul>
         <ul className="navigation_list">
           <li className="nav_li">
-            <Link to="/submitidea">Submit Idea</Link>
-          </li>
-          <li className="nav_li">
             <Link onClick={this.handleLogoutClick} to="/">
               Logout
             </Link>
+          </li>
+          <li className="nav_li">
+            <Link to="/submitidea">Submit Idea</Link>
           </li>
         </ul>
       </nav>
