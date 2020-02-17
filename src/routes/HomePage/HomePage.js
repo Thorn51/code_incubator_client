@@ -21,7 +21,9 @@ class HomePage extends React.Component {
     return (
       <main className="App">
         <Hero />
-        {TokenServices.hasAuthToken() ? this.renderSubmitIdeaButton() : null}
+        <div className="idea_button_container">
+          {TokenServices.hasAuthToken() ? this.renderSubmitIdeaButton() : null}
+        </div>
         <CardList ideas={ideas} users={users} />
         <Footer />
       </main>
