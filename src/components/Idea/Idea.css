@@ -1,0 +1,50 @@
+.idea_page_header {
+  display: flex;
+  justify-content: center;
+  height: 40vh;
+  background-image: url(https://images.unsplash.com/photo-1574103188526-4faaa363a358?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80);
+  background-size: cover;
+  background-position: 50% 65%;
+  background-repeat: no-repeat;
+  margin: 0px;
+}
+
+.app_name {
+  font-size: 2em;
+  color: #011627;
+}
+
+.project_vote {
+  background-color: #011627;
+}
+
+@media only screen and (min-width: 700px) {
+  .idea_page_header {
+    background-position: 50% 60%;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .idea_page_header {
+    background-position: 50% 58%;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .idea_page_header {
+    background-position: 50% 56%;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .idea_page_header {
+    background-position: 50% 53%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .idea_page_header {
+    background-position: 50% 52%;
+  }
+}
+@media only screen and (min-width: 1500px) {
+  .idea_page_header {
+    background-position: 50% 50%;
+  }
+}
