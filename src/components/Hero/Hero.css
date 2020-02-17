@@ -42,31 +42,35 @@
   }
 }
 
-.app_name {
+.hero_title {
   margin: 40px 0px 0px 0px;
   color: white;
-  font-size: 1.5em;
+  font-size: 2em;
   text-align: center;
 }
 
 .hero_tag {
-  font-size: 1em;
+  font-size: 0.8em;
   padding: 0px 10px 0px 10px;
   color: white;
   text-align: center;
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  width: 80%;
 }
 
 @media only screen and (min-width: 600px) {
-  .app_name {
-    font-size: 2em;
+  .hero_title {
+    font-size: 3em;
+  }
+  .hero_tag {
+    font-size: 1.5em;
   }
 }
 
 @media only screen and (min-width: 1224px) {
-  .app_name {
+  .hero_title {
     font-size: 4em;
   }
 }
