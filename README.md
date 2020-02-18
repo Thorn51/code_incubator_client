@@ -14,8 +14,8 @@ The purpose of this program was to create a place to submit full-stack web devel
 
 #### 1. Landing Page
 
-![Code Incubator Landing page3 - Pre Login](/src/images/homepage-pre-login.PNG)
-![Code Incubator Landing Page - Post Login](/src/images/homepage-post-login.PNG)
+![Code Incubator Landing page3 - Pre Login](/src/images/homepage-pre-login-sm.PNG)
+![Code Incubator Landing Page - Post Login](/src/images/homepage-post-login-sm.PNG)
 
 ## Future of App
 
@@ -23,7 +23,7 @@ The project is currently an MVP. As an MVP it has basic functionality, but it ha
 
 ## API
 
-The client is connected to the [Code Incubator API](https://github.com/Thorn51/code_incubator_api)
+The client is connected to the [Code Incubator API](https://github.com/Thorn51/code_incubator_api). It is dependent on fetching data from the PostgreSQL database provisioned to the server.
 
 ## Technologies Used
 
