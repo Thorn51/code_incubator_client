@@ -54,9 +54,9 @@ exports[`<IdeaForm /> renders IdeaForm as expected 1`] = `
       Idea
     </option>
     <option
-      value="In Development"
+      value="In-Development"
     >
-      In Development
+      In-Development
     </option>
     <option
       value="Complete"
