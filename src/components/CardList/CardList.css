@@ -26,8 +26,8 @@
   box-shadow: 3px 3px #84828f;
 }
 
-.idea_card:hover {
-  animation: forwards;
+.idea_card:hover > div {
+  background-color: #0023aa;
 }
 
 .project_info {
