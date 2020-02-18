@@ -20,14 +20,22 @@ export default function Idea(props) {
         </div>
       </header>
       <section className="project_details">
-        <span className="project_author">
-          Submitted by: {props.author.nickname}
-        </span>
-        <span className="date_submitted">
-          Submitted: {moment(props.idea.date_submitted).format("MMM Do YYY")}
-        </span>
-        <span className="project_status">Status: {props.idea.status}</span>
-        <span className="repo">Repo: {props.idea.github}</span>
+        <p>
+          <span className="bold"> Submitted by:</span>{" "}
+          <span>{props.author.nickname}</span>
+        </p>
+        <p>
+          <span className="bold">Submit Date:</span>{" "}
+          <span>{moment(props.idea.date_submitted).format("MMM Do YYY")}</span>
+        </p>
+        <p>
+          <span className="bold">Status:</span> <span>{props.idea.status}</span>
+        </p>
+        {props.idea.github === "" ? null : (
+          <p>
+            <span className="bold">Repo:</span> <span>{props.idea.github}</span>
+          </p>
+        )}
       </section>
 
       <section className="idea_description">
