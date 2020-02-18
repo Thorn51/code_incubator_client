@@ -17,6 +17,14 @@
   margin: 0px;
 }
 
+.project_details,
+.idea_description {
+  background-color: white;
+  padding: 15px;
+
+  border-radius: 10px;
+  box-shadow: 3px 3px #84828f;
+}
 .app_name {
   font-size: 2em;
   color: white;
