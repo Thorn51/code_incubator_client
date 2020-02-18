@@ -4,8 +4,50 @@ exports[`<Hero /> Renders HERO as expected 1`] = `
 <header
   className="hero"
 >
+  <nav
+    className="navigationBar"
+  >
+    <ul
+      className="nav_logo"
+    >
+      <li
+        className="nav_li"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          Code Incubator
+        </a>
+      </li>
+    </ul>
+    <ul
+      className="navigation_list"
+    >
+      <li
+        className="nav_li"
+      >
+        <a
+          href="/login"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+      </li>
+      <li
+        className="nav_li"
+      >
+        <a
+          href="/register"
+          onClick={[Function]}
+        >
+          Register
+        </a>
+      </li>
+    </ul>
+  </nav>
   <h1
-    className="app_name"
+    className="hero_title"
   >
     Code Incubator
   </h1>

@@ -43,27 +43,44 @@ Array [
   <section
     className="project_details"
   >
-    <span
-      className="project_author"
-    >
-      Submitted by: 
-    </span>
-    <span
-      className="date_submitted"
-    >
-      Submitted: 
-      Feb 13th 202020
-    </span>
-    <span
-      className="project_status"
-    >
-      Status: 
-    </span>
-    <span
-      className="repo"
-    >
-      Repo: 
-    </span>
+    <p>
+      <span
+        className="bold"
+      >
+         Submitted by:
+      </span>
+       
+      <span />
+    </p>
+    <p>
+      <span
+        className="bold"
+      >
+        Submit Date:
+      </span>
+       
+      <span>
+        Feb 17th 202020
+      </span>
+    </p>
+    <p>
+      <span
+        className="bold"
+      >
+        Status:
+      </span>
+       
+      <span />
+    </p>
+    <p>
+      <span
+        className="bold"
+      >
+        Repo:
+      </span>
+       
+      <span />
+    </p>
   </section>,
   <section
     className="idea_description"

@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CardList /> renders the UI as expected 1`] = `
-<div
-  className="card_container"
-/>
+<section
+  className="latest_ideas"
+>
+  <div
+    className="card_container"
+  />
+</section>
 `;
