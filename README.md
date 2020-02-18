@@ -1,14 +1,40 @@
 # Code Incubator
 
-## Overview
+Code Incubator was developed as a capstone project in the Thinkful Engineering Flex program.
 
-Code Incubator was developed as a capstone project in the Thinkful Engineering Flex program. The purpose of this program was to create a place to submit ideas for full-stack web development project ideas, receive feedback, and to help inspire students.
+## Purpose
 
-## React
+The purpose of this program was to create a place to submit ideas for full-stack web development project ideas, receive feedback, and to help inspire ideas for future students.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Demo
 
-### Available Scripts
+- [Code Incubator - https://code-incubator-app.mtberry16.now.sh/](https://code-incubator-app.mtberry16.now.sh/)
+
+## Screenshots
+
+1. Landing Page
+   ![Code Incubator Landing Page](/src/images/homepage-post-login.PNG)
+
+## Future of App
+
+The project is currently an MVP. As an MVP it has basic functionality, but it has huge potential. To keep track of proposed features please visit [GitHub Project](https://github.com/users/Thorn51/projects/2).
+
+## API
+
+The client is connected to the [Code Incubator API](https://github.com/Thorn51/code_incubator_api)
+
+## Technologies Used
+
+- React
+- Node.js
+- Express
+- JavaScript
+- HTML
+- CSS
+
+## Client Scripts
+
+The client was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
