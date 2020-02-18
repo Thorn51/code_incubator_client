@@ -127,7 +127,7 @@ export default class IdeaForm extends React.Component {
           onChange={e => this.handleStatusChange(e.target.value)}
         >
           <option defaultValue="Idea">Idea</option>
-          <option value="In Development">In Development</option>
+          <option value="In-Development">In-Development</option>
           <option value="Complete">Complete</option>
         </select>
         <label htmlFor="github">GitHub Repo URL (Optional)</label>
