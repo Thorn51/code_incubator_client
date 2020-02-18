@@ -12,7 +12,7 @@ The purpose of this program was to create a place to submit full-stack web devel
 
 ## Screenshots
 
-1. Landing Page
+#### 1. Landing Page
 
 ![Code Incubator Landing page3 - Pre Login](/src/images/homepage-pre-login.PNG)
 ![Code Incubator Landing Page - Post Login](/src/images/homepage-post-login.PNG)
