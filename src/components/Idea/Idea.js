@@ -26,7 +26,7 @@ export default function Idea(props) {
         </p>
         <p>
           <span className="bold">Submit Date:</span>{" "}
-          <span>{moment(props.idea.date_submitted).format("MMM Do YYY")}</span>
+          <span>{moment(props.idea.date_submitted).format("MMM Do YYYY")}</span>
         </p>
         <p>
           <span className="bold">Status:</span> <span>{props.idea.status}</span>
