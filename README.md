@@ -4,7 +4,7 @@ Code Incubator was developed as a capstone project in the Thinkful Engineering F
 
 ## Purpose
 
-The purpose of this program was to create a place to submit full-stack web development project ideas, receive feedback, and to help inspire future students.
+The purpose of this program was to create a place to submit full-stack web development project ideas, receive feedback, and to help inspire future students. After an idea is submitted users can vote and comment on the idea.
 
 ## Demo
 
@@ -14,8 +14,13 @@ The purpose of this program was to create a place to submit full-stack web devel
 
 #### 1. Landing Page
 
-![Code Incubator Landing page3 - Pre Login](/src/images/homepage-pre-login-sm.png)
+![Code Incubator Landing Page - Pre Login](/src/images/homepage-pre-login-sm.png)
 ![Code Incubator Landing Page - Post Login](/src/images/homepage-post-login-sm.png)
+
+#### 2. Idea Page
+
+![Code Incubator Idea Page - Details](/src/images/idea-page-sm.png)
+![Code Incubator Idea Page - Feedback](/src/images/idea-page-2-sm.png)
 
 ## Future of App
 
