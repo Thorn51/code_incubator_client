@@ -14,8 +14,8 @@ The purpose of this program was to create a place to submit full-stack web devel
 
 #### 1. Landing Page
 
-![Code Incubator Landing page3 - Pre Login](/src/images/homepage-pre-login-sm.PNG)
-![Code Incubator Landing Page - Post Login](/src/images/homepage-post-login-sm.PNG)
+![Code Incubator Landing page3 - Pre Login](/src/images/homepage-pre-login-sm.png)
+![Code Incubator Landing Page - Post Login](/src/images/homepage-post-login-sm.png)
 
 ## Future of App
 
