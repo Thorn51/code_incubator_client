@@ -4,7 +4,7 @@ Code Incubator was developed as a capstone project in the Thinkful Engineering F
 
 ## Purpose
 
-The purpose of this program was to create a place to submit full-stack web development project ideas, receive feedback, and to help inspire future students. After an idea is submitted users can vote and comment on the idea.
+The purpose of this application is to create a place to submit full-stack web development project ideas, receive feedback, and to help inspire future students. After an idea is submitted users can vote and comment on the idea.
 
 ## Demo
 
@@ -32,9 +32,10 @@ The client is connected to the [Code Incubator API](https://github.com/Thorn51/c
 
 ## Technologies Used
 
+- PostgreSQL
+- Express
 - React
 - Node.js
-- Express
 - JavaScript
 - HTML
 - CSS
@@ -68,7 +69,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-#### 'npm run deploy'
+#### `npm run deploy`
 
 Tests, builds and deploys the app to Zeit.
 
