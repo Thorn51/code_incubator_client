@@ -24,7 +24,7 @@ The purpose of this application is to create a place to submit full-stack web de
 
 ## Future of App
 
-The project is currently an MVP. As an MVP it has basic functionality, but it has huge potential. To keep track of proposed features please visit [GitHub Project](https://github.com/users/Thorn51/projects/2).
+The project is currently an MVP. To keep track of proposed features please visit [GitHub Project](https://github.com/users/Thorn51/projects/2).
 
 ## API
 
