@@ -32,10 +32,8 @@ The client is connected to the [Code Incubator API](https://github.com/Thorn51/c
 
 ## Technologies Used
 
-- PostgreSQL
-- Express
 - React
-- Node.js
+- JSX
 - JavaScript
 - HTML
 - CSS
