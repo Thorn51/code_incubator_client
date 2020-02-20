@@ -35,8 +35,6 @@ class App extends React.Component {
   };
 
   handleRegistration = newUser => {
-    const userId = this.state.users.length + 1;
-    newUser.id = userId;
     this.setState({
       users: [...this.state.users, newUser]
     });
