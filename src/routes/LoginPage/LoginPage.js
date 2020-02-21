@@ -14,6 +14,7 @@ export default class LoginPage extends React.Component {
   };
 
   handleLoginSuccess = () => {
+    //Route user to location they were accessing prior to logging in
     const { location, history } = this.props;
     const destination = (location.state || {}).from || "/";
     history.push(destination);

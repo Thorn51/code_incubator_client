@@ -5,6 +5,7 @@ import ValidationError from "../ValidationError/ValidationError";
 import ApiService from "../../services/api-service";
 
 export default class IdeaForm extends React.Component {
+  //Setup state for a controlled form
   state = {
     project_title: {
       value: "",
@@ -73,6 +74,7 @@ export default class IdeaForm extends React.Component {
 
     ApiService.postIdea(newIdea).then(data => {
       this.props.handleNewIdea(data);
+      //Reset the form
       this.setState({
         project_title: {
           value: "",
@@ -85,6 +87,7 @@ export default class IdeaForm extends React.Component {
         status: "Idea",
         github: ""
       });
+      //Send the user to the idea that they just created.
       this.props.history.push(`/idea/${data.id}`);
     });
   }
@@ -103,6 +106,7 @@ export default class IdeaForm extends React.Component {
           value={this.state.project_title.value}
           onChange={e => this.handleTitleChange(e.target.value)}
         />
+        {/* Display validation error message if user touches input but leaves it blank */}
         {this.state.project_title.touched && (
           <ValidationError message={validateTitle} />
         )}
@@ -116,6 +120,7 @@ export default class IdeaForm extends React.Component {
           value={this.state.project_summary.value}
           onChange={e => this.handleSummaryChange(e.target.value)}
         ></textarea>
+        {/* Display validation error message if user touches input but leaves it blank */}
         {this.state.project_summary.touched && (
           <ValidationError message={validateSummary} />
         )}
@@ -141,6 +146,7 @@ export default class IdeaForm extends React.Component {
         <button
           type="submit"
           className="form_button"
+          // disable button if validation fails
           disabled={this.validateTitle() || this.validateSummary()}
         >
           Submit

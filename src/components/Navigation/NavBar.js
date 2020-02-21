@@ -8,6 +8,7 @@ class NavBar extends React.Component {
     TokenServices.clearAuthToken();
   };
 
+  //navigation if user is logged in
   renderLogoutNav() {
     return (
       <nav className="navigationBar">
@@ -30,6 +31,7 @@ class NavBar extends React.Component {
     );
   }
 
+  //Navigation if user is not logged in
   renderLoginNav() {
     return (
       <nav className="navigationBar">
@@ -52,6 +54,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <>
+        {/* Render navigation based on if the user is logged in or not */}
         {TokenServices.hasAuthToken()
           ? this.renderLogoutNav()
           : this.renderLoginNav()}

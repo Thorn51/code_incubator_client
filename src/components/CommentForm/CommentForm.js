@@ -25,6 +25,7 @@ export default class CommentForm extends React.Component {
 
     ApiService.postComment(newComment).then(data => {
       this.setState({
+        //reset comment form
         comment: ""
       });
       this.props.handleComment(data);

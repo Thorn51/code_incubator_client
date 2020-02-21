@@ -57,13 +57,14 @@ export default class IdeaPage extends React.Component {
   };
 
   commentUpVote = commentId => {
+    //Find comment
     const comment = this.state.comments.find(
       comment => comment.id === commentId
     );
     const currentVote = parseInt(comment.votes);
     comment.votes = currentVote + 1;
     const votes = comment.votes;
-
+    //Update vote count in database
     fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, {
       method: "PATCH",
       body: JSON.stringify({ votes: votes }),
@@ -92,13 +93,14 @@ export default class IdeaPage extends React.Component {
   };
 
   commentDownVote = commentId => {
+    //Find comment
     const comment = this.state.comments.find(
       comment => comment.id === commentId
     );
     const currentVote = parseInt(comment.votes);
     comment.votes = currentVote - 1;
     const votes = comment.votes;
-
+    //Update vote count in database
     fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, {
       method: "PATCH",
       body: JSON.stringify({ votes }),
@@ -187,6 +189,7 @@ export default class IdeaPage extends React.Component {
   };
 
   render() {
+    //Find that comments for this idea
     const ideaComments = this.state.comments.filter(
       comment => comment.project === this.state.idea.id
     );

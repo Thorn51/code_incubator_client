@@ -6,6 +6,8 @@ import AuthService from "../../services/auth-api-service";
 export default class RegistrationForm extends React.Component {
   constructor(props) {
     super(props);
+
+    //controlled form
     this.state = {
       first_name: {
         value: "",
@@ -107,6 +109,7 @@ export default class RegistrationForm extends React.Component {
       .then(user => {
         this.props.handleRegistration(newUser);
         this.setState({
+          //reset form
           first_name: {
             value: "",
             touched: false
@@ -132,6 +135,8 @@ export default class RegistrationForm extends React.Component {
             touched: false
           }
         });
+        //Todo -> login user automatically after registration
+        //Push user to login page
         this.props.history.push("/login");
       })
       .catch(res => {
@@ -167,6 +172,7 @@ export default class RegistrationForm extends React.Component {
     if (email.length === 0) {
       return "Email is required.";
     } else if (
+      //Regex Email Validation as per RFC2822 standards from regexr.com -> RFC2822 Email Verification
       !email.match(
         /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
       )
@@ -179,6 +185,7 @@ export default class RegistrationForm extends React.Component {
     const password = this.state.password.value.trim();
     if (password.length === 0) {
       return "Password is required.";
+      //Regex ensures that password is 8 to 64 characters long and contains a mix of upper and lower case characters, one numeric and one special character from regexr.com -> Strong Password Validator
     } else if (
       !password.match(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/g)
     ) {
@@ -216,6 +223,7 @@ export default class RegistrationForm extends React.Component {
           onChange={e => this.handleFirstNameChange(e.target.value)}
           required
         />
+        {/* Render error message if input left blank */}
         {this.state.first_name.touched && (
           <ValidationError message={firstNameError} />
         )}
@@ -229,6 +237,7 @@ export default class RegistrationForm extends React.Component {
           onChange={e => this.handleLastNameChange(e.target.value)}
           required
         />
+        {/* Render error message if input left blank */}
         {this.state.last_name.touched && (
           <ValidationError message={lastNameError} />
         )}
@@ -242,6 +251,7 @@ export default class RegistrationForm extends React.Component {
           onChange={e => this.handleNicknameChange(e.target.value)}
           required
         />
+        {/* Render error message if input left blank */}
         {this.state.nickname.touched && (
           <ValidationError message={nicknameError} />
         )}
@@ -255,6 +265,7 @@ export default class RegistrationForm extends React.Component {
           onChange={e => this.handleEmailChange(e.target.value)}
           required
         />
+        {/* Render error message if input left blank */}
         {this.state.email.touched && <ValidationError message={emailError} />}
         <label htmlFor="registration_password">Password:</label>
         <input
@@ -266,6 +277,7 @@ export default class RegistrationForm extends React.Component {
           onChange={e => this.handlePasswordChange(e.target.value)}
           required
         />
+        {/* Render error message if input left blank */}
         {this.state.password.touched && (
           <ValidationError message={passwordError} />
         )}
@@ -279,6 +291,7 @@ export default class RegistrationForm extends React.Component {
           onChange={e => this.handleRepeatPasswordChange(e.target.value)}
           required
         />
+        {/* Render error message if input left blank */}
         {this.state.repeat_password.touched && (
           <ValidationError message={repeatPasswordError} />
         )}
