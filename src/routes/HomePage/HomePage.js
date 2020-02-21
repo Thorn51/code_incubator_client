@@ -7,6 +7,7 @@ import "./HomePage.css";
 import TokenServices from "../../services/token-service";
 
 class HomePage extends React.Component {
+  //The submit idea button is oly rendered when a user is logged in
   renderSubmitIdeaButton() {
     return (
       <Link to="/submitidea">
@@ -22,6 +23,7 @@ class HomePage extends React.Component {
       <main className="App">
         <Hero />
         <div className="idea_button_container">
+          {/* Check to see if an auth token has been issued, if so, render button */}
           {TokenServices.hasAuthToken() ? this.renderSubmitIdeaButton() : null}
         </div>
         <CardList ideas={ideas} users={users} />
