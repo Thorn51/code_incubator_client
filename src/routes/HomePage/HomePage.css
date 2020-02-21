@@ -16,3 +16,16 @@
 .idea_button:hover {
   background-color: #0023aa;
 }
+
+.demo_user {
+  width: 80%;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 3px 3px #84828f;
+  margin: 0px auto 75px auto;
+}
+
+.demo_user > p {
+  padding: 0px 0px 10px 0px;
+}

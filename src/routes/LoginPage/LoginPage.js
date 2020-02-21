@@ -26,7 +26,22 @@ export default class LoginPage extends React.Component {
         <NavBar />
         <Hero />
         <LoginForm onLoginSuccess={this.handleLoginSuccess} />
+
         <div className="form_redirect">
+          {/* this section is included to meet Thinkful submission requirements */}
+          <section className="demo_user">
+            <h1 className="section_title">Demo User</h1>
+            <p>
+              Feel free to login as demoUser to take a spin around Code
+              Incubator.
+            </p>
+            <p>
+              <span className="bold">Email: </span>demo.user@demo.com
+            </p>
+            <p>
+              <span className="bold">Password: </span>DemoUser1!
+            </p>
+          </section>
           <hr />
           <p>
             Do you need to create an account? Visit the{" "}

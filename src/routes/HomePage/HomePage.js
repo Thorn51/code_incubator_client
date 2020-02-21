@@ -46,6 +46,19 @@ class HomePage extends React.Component {
           {TokenServices.hasAuthToken() ? this.renderSubmitIdeaButton() : null}
         </div>
         <CardList ideas={ideas} users={users} />
+        {/* this section is included to meet Thinkful submission requirements */}
+        <section className="demo_user">
+          <h1 className="section_title">Demo User</h1>
+          <p>
+            Feel free to login as demoUser to take a spin around Code Incubator.
+          </p>
+          <p>
+            <span className="bold">Email: </span>demo.user@demo.com
+          </p>
+          <p>
+            <span className="bold">Password: </span>DemoUser1!
+          </p>
+        </section>
         <Footer />
       </main>
     );
