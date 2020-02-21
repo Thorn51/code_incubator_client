@@ -6,10 +6,14 @@ import RegistrationPage from "./routes/RegistrationPage/RegistrationPage";
 import NoPage from "./routes/NoPage/NoPage";
 import IdeaPage from "./routes/IdeaPage/IdeaPage";
 import SubmitIdeaPage from "./routes/SubmitIdeaPage/SubmitIdeaPage";
-import ApiService from "./services/api-service";
 import PrivateRoute from "./components/utils/PrivateRoute";
 
 class App extends React.Component {
+  state = {
+    users: [],
+    ideas: []
+  };
+
   handleNewIdea = newIdea => {
     this.setState({
       ideas: [...this.state.ideas, newIdea]
