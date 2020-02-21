@@ -5,9 +5,28 @@ import CardList from "../../components/CardList/CardList";
 import Footer from "../../components/Footer/Footer";
 import "./HomePage.css";
 import TokenServices from "../../services/token-service";
+import ApiService from "../../services/api-service";
 
 class HomePage extends React.Component {
   //The submit idea button is oly rendered when a user is logged in
+  state = {
+    ideas: [],
+    users: []
+  };
+
+  componentDidMount() {
+    ApiService.getAllUsers().then(users => {
+      this.setState({
+        users
+      });
+    });
+    ApiService.getAllIdeas().then(ideas => {
+      this.setState({
+        ideas
+      });
+    });
+  }
+
   renderSubmitIdeaButton() {
     return (
       <Link to="/submitidea">
@@ -18,7 +37,7 @@ class HomePage extends React.Component {
     );
   }
   render() {
-    const { ideas, users } = this.props;
+    const { ideas, users } = this.state;
     return (
       <main className="App">
         <Hero />
