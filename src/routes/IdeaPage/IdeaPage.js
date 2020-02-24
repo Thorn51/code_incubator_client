@@ -2,21 +2,16 @@ import React from "react";
 import "./IdeaPage.css";
 import NavBar from "../../components/Navigation/NavBar";
 import Idea from "../../components/Idea/Idea";
-import CommentForm from "../../components/CommentForm/CommentForm";
-import Comment from "../../components/Comment/Comment";
 import Footer from "../../components/Footer/Footer";
 import ApiService from "../../services/api-service";
-import config from "../../config";
-import TokenServices from "../../services/token-service";
+import CommentList from "../../components/commentList/CommentList";
 
 export default class IdeaPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       idea: [],
-      ideaAuthor: [],
-      users: [],
-      comments: []
+      ideaAuthor: []
     };
   }
 
@@ -38,124 +33,18 @@ export default class IdeaPage extends React.Component {
           });
         });
       });
-    ApiService.getAllUsers().then(users => {
-      this.setState({
-        users
-      });
-    });
-    ApiService.getAllComments().then(comments => {
-      this.setState({
-        comments
-      });
-    });
   }
-
-  handleComment = newComment => {
-    this.setState({
-      comments: [...this.state.comments, newComment]
-    });
-  };
-
-  commentUpVote = commentId => {
-    //Find comment
-    const comment = this.state.comments.find(
-      comment => comment.id === commentId
-    );
-    const currentVote = parseInt(comment.votes);
-    comment.votes = currentVote + 1;
-    const votes = comment.votes;
-    //Update vote count in database
-    fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, {
-      method: "PATCH",
-      body: JSON.stringify({ votes: votes }),
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${TokenServices.getAuthToken()}`
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(
-            "There has been a error while editing the comment vote"
-          );
-        } else {
-          return response.json();
-        }
-      })
-      .then(() => {
-        this.setState({
-          comment
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  commentDownVote = commentId => {
-    //Find comment
-    const comment = this.state.comments.find(
-      comment => comment.id === commentId
-    );
-    const currentVote = parseInt(comment.votes);
-    comment.votes = currentVote - 1;
-    const votes = comment.votes;
-    //Update vote count in database
-    fetch(config.API_ENDPOINT + `/api/comments/${commentId}`, {
-      method: "PATCH",
-      body: JSON.stringify({ votes }),
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${TokenServices.getAuthToken()}`
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(
-            "There has been a error while editing the comment vote"
-          );
-        } else {
-          return response.json();
-        }
-      })
-      .then(() => {
-        this.setState({
-          votes
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
 
   projectUpVote = () => {
     const idea = { ...this.state.idea };
     idea.votes = parseInt(idea.votes) + 1;
     const votes = idea.votes;
 
-    fetch(config.API_ENDPOINT + `/api/ideas/${this.state.idea.id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ votes: votes }),
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${TokenServices.getAuthToken()}`
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("There was a problem editing idea");
-        } else {
-          return response.json();
-        }
-      })
-      .then(() => {
-        this.setState({
-          idea
-        });
-      })
-      .catch(err => {
-        console.log(err);
+    ApiService.patchProjectVote(votes, this.state.idea.id).then(() => {
+      this.setState({
+        idea
       });
+    });
   };
 
   projectDownVote = () => {
@@ -163,51 +52,14 @@ export default class IdeaPage extends React.Component {
     idea.votes = parseInt(idea.votes) - 1;
     const votes = idea.votes;
 
-    fetch(config.API_ENDPOINT + `/api/ideas/${this.state.idea.id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ votes: votes }),
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${TokenServices.getAuthToken()}`
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("There was a problem editing idea");
-        } else {
-          return response.json();
-        }
-      })
-      .then(() => {
-        this.setState({
-          idea
-        });
-      })
-      .catch(err => {
-        console.log(err);
+    ApiService.patchProjectVote(votes, idea.id).then(() => {
+      this.setState({
+        idea
       });
+    });
   };
 
   render() {
-    //Find that comments for this idea
-    const ideaComments = this.state.comments.filter(
-      comment => comment.project === this.state.idea.id
-    );
-
-    const comment = ideaComments.map(comment => {
-      const commentAuthor = this.state.users.find(
-        author => author.id === comment.author
-      );
-      return (
-        <Comment
-          key={comment.id}
-          {...comment}
-          commentUpVote={this.commentUpVote}
-          commentDownVote={this.commentDownVote}
-          commentAuthor={commentAuthor}
-        />
-      );
-    });
     return (
       <div>
         <NavBar />
@@ -219,11 +71,7 @@ export default class IdeaPage extends React.Component {
         />
         <section className="feedback">
           <h2 className="section_title">Feedback</h2>
-          {comment}
-          <CommentForm
-            project={this.state.idea.id}
-            handleComment={this.handleComment}
-          />
+          <CommentList project={this.props.match.params.id} />
         </section>
         <Footer />
       </div>
