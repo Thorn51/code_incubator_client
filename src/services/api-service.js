@@ -116,6 +116,25 @@ const ApiService = {
         console.log(error);
       });
   },
+  getComment(id) {
+    return fetch(config.API_ENDPOINT + `/api/comments/${id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch idea`);
+        } else {
+          return response.json();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
   getUser(id) {
     return fetch(config.API_ENDPOINT + `/api/users/${id}`, {
       method: "GET",
@@ -209,6 +228,48 @@ const ApiService = {
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to post idea vote");
+        } else {
+          return response.json();
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+  patchProjectVote(vote, id) {
+    return fetch(config.API_ENDPOINT + `/api/ideas/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ votes: vote }),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("There was a problem editing idea");
+        } else {
+          return response.json();
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+  patchCommentVote(vote, id) {
+    return fetch(config.API_ENDPOINT + `/api/comments/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ votes: vote }),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(
+            "There has been a error while editing the comment vote"
+          );
         } else {
           return response.json();
         }
