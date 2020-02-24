@@ -1,4 +1,5 @@
 import config from "../config";
+import jwtDecode from "jwt-decode";
 
 const TokenServices = {
   makeBasicAuthToken(user_name, password) {
@@ -15,6 +16,10 @@ const TokenServices = {
   },
   clearAuthToken() {
     window.sessionStorage.removeItem(config.TOKEN_KEY);
+  },
+  getUserDetails(token) {
+    const loggedInUser = jwtDecode(token);
+    return loggedInUser;
   }
 };
 
