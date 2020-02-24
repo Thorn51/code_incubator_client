@@ -21,6 +21,25 @@ const ApiService = {
         console.log(error);
       });
   },
+  getAllIdeaVotes() {
+    return fetch(config.API_ENDPOINT + "/api/idea/vote", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `basic ${config.API_TOKEN}`
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch idea votes");
+        } else {
+          return response.json();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
   getAllComments() {
     return fetch(config.API_ENDPOINT + `/api/comments`, {
       method: "GET",
@@ -32,6 +51,25 @@ const ApiService = {
       .then(response => {
         if (!response.ok) {
           throw new Error("An error is preventing fetching comments");
+        } else {
+          return response.json();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  getAllCommentVotes() {
+    return fetch(config.API_ENDPOINT + `/api/comment/vote`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("An error is preventing fetching comment votes");
         } else {
           return response.json();
         }
@@ -119,6 +157,26 @@ const ApiService = {
         console.log(error);
       });
   },
+  postCommentVote(newVote) {
+    return fetch(config.API_ENDPOINT + "/api/comment/vote", {
+      method: "POST",
+      body: JSON.stringify(newVote),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("There has been a problem posting the comment vote");
+        } else {
+          return response.json();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
   postIdea(newIdea) {
     return fetch(config.API_ENDPOINT + "/api/ideas", {
       method: "POST",
@@ -139,7 +197,26 @@ const ApiService = {
         console.log(err);
       });
   },
-  editComment() {}
+  postIdeaVote(newVote) {
+    return fetch(config.API_ENDPOINT + "/api/idea/vote", {
+      method: "POST",
+      body: JSON.stringify(newVote),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to post idea vote");
+        } else {
+          return response.json();
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 };
 
 export default ApiService;
