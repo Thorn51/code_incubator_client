@@ -37,3 +37,15 @@
 .comment_text {
   padding: 10px;
 }
+
+.disabled {
+  color: grey;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
