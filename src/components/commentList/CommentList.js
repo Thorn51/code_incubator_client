@@ -1,7 +1,7 @@
 import React from "react";
 import "./CommentList.css";
-import CommentForm from "../../components/CommentForm/CommentForm";
-import Comment from "../../components/Comment/Comment";
+import CommentForm from "../CommentForm/CommentForm";
+import Comment from "../Comment/Comment";
 import ApiService from "../../services/api-service";
 
 export default class CommentList extends React.Component {
@@ -14,8 +14,9 @@ export default class CommentList extends React.Component {
 
   componentDidMount() {
     ApiService.getAllComments().then(data => {
+      const project = parseInt(this.props.project);
       const projectComments = data.filter(
-        comment => comment.project == this.props.project
+        comment => comment.project === project
       );
       this.setState({
         comments: projectComments
@@ -35,6 +36,7 @@ export default class CommentList extends React.Component {
     ));
     return (
       <section className="feedback">
+        <h2 className="section_title">Feedback</h2>
         <div className="comment_list">{comment}</div>
         <div className="submit_feedback">
           <CommentForm
