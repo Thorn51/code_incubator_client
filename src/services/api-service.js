@@ -26,7 +26,7 @@ const ApiService = {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        Authorization: `basic ${config.API_TOKEN}`
+        Authorization: `Bearer ${TokenServices.getAuthToken()}`
       }
     })
       .then(response => {
@@ -176,10 +176,10 @@ const ApiService = {
         console.log(error);
       });
   },
-  postCommentVote(newVote) {
+  postCommentVote(vote, id) {
     return fetch(config.API_ENDPOINT + "/api/comment/vote", {
       method: "POST",
-      body: JSON.stringify(newVote),
+      body: JSON.stringify({ vote: vote, comment_id: id }),
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${TokenServices.getAuthToken()}`
@@ -216,10 +216,10 @@ const ApiService = {
         console.log(err);
       });
   },
-  postIdeaVote(newVote) {
+  postIdeaVote(vote, id) {
     return fetch(config.API_ENDPOINT + "/api/idea/vote", {
       method: "POST",
-      body: JSON.stringify(newVote),
+      body: JSON.stringify({ vote: vote, idea_id: id }),
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${TokenServices.getAuthToken()}`
