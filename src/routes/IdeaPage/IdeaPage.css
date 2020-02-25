@@ -1,11 +1,52 @@
 .idea_page_header {
   position: relative;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-color: lightgray;
-  min-height: 150px;
-  margin-top: 25px;
+  height: 40vh;
+  background: linear-gradient(
+        45deg,
+        rgba(39, 38, 1, 0.8),
+        rgba(0, 35, 170, 0.7),
+        rgba(53, 49, 21, 0.7),
+        rgba(248, 211, 0, 0.7)
+      )
+      0 0 / 1000% no-repeat,
+    url("https://images.unsplash.com/photo-1566148252861-3def7b71c74d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  margin: 0px;
+}
+
+.project_details,
+.idea_description {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 3px 3px #84828f;
+}
+.app_name {
+  text-align: center;
+  width: 100%;
+  font-size: 2em;
+  color: white;
+  text-emphasis-color: black;
+}
+
+.project_vote {
+  background-color: #011627;
+  position: absolute;
+  font-size: 1em;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.bold {
+  font-weight: bolder;
 }
 
 .project_vote {
@@ -33,11 +74,6 @@
   margin-bottom: 40px;
 }
 
-.app_name {
-  text-align: center;
-  width: 100%;
-}
-
 .section_title {
   font-size: 1em;
   font-weight: bold;
@@ -61,4 +97,16 @@
 .features_list {
   list-style-position: inside;
   padding: 0 0 25px 0;
+}
+
+@media only screen and (min-width: 600px) {
+  .app_name {
+    font-size: 3em;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .app_name {
+    font-size: 4em;
+  }
 }
